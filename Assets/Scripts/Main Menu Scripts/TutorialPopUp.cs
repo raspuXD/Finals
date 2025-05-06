@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TutorialPopUp : MonoBehaviour
 {
+    public GameObject canvas;
     public Button theTutorialButton;
     public GameObject thePopUp, canCountinueNow;
     public TMP_Text theInfoText, howToGetAwayText;
@@ -63,11 +64,19 @@ public class TutorialPopUp : MonoBehaviour
 
             if (hasSeen == 0)
             {
+                canvas.SetActive(true);
                 startedThePop = true;
                 thePopUp.transform.localScale = Vector3.zero;
                 theTutorialButton.gameObject.SetActive(true);
-                theInfoText.text = textToShow;
-                theTutorialButton.interactable = false;
+                if(!usesMultipleDias)
+                {
+                    theInfoText.text = textToShow;
+                }
+                else
+                {
+                    theInfoText.text = theDifferentDias[0];
+                }
+                    theTutorialButton.interactable = false;
                 AudioManager.Instance.PlaySFX("PopUp");
                 StartCoroutine(ScaleTheButton(true));
                 theTutorialButton.onClick.AddListener(ClosePopUpAndClearButton);
@@ -80,6 +89,7 @@ public class TutorialPopUp : MonoBehaviour
         }
         else
         {
+            canvas.SetActive(true);
             startedThePop = true;
             thePopUp.transform.localScale = Vector3.zero;
             theTutorialButton.gameObject.SetActive(true);
@@ -180,6 +190,7 @@ public class TutorialPopUp : MonoBehaviour
             theTutorialButton.gameObject.SetActive(false);
             PlayerPrefs.SetInt(thePlayerPrefName, 1);
             PlayerPrefs.Save();
+            canvas.SetActive(false);
             Destroy(gameObject);
         }
     }
