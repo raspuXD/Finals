@@ -4429,8 +4429,10 @@ MonoBehaviour:
   TotalCost: 0
   UpgradeButton: {fileID: 657820726}
   level1Prefabs: []
-  level2Prefabs: []
-  level3Prefabs: []
+  level2Prefabs:
+  - {fileID: 1672670488352211932, guid: 5e75df3a55608e14291337e45190450b, type: 3}
+  level3Prefabs:
+  - {fileID: 1672670488352211932, guid: 2c0b9eb2b905b3147944e10126d7b08e, type: 3}
   spawnPoint: {fileID: 1960324783}
   resetPoint: {fileID: 1316186496}
   MinSpawnInterval: 6

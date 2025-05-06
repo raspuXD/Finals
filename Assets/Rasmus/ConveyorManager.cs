@@ -10,6 +10,7 @@ public class ConveyorManager : MonoBehaviour
 
     // Current belt level
     public int BeltLevel = 1;
+    private int MaxBeltLevel = 3;
     public int BeltCost;
     public int TotalCost;
     public GameObject UpgradeButton;
@@ -77,7 +78,7 @@ public class ConveyorManager : MonoBehaviour
     }
     public void UpgradeBelt()
     {
-        if (moneyManager.Money >= TotalCost)
+        if (moneyManager.Money >= TotalCost && BeltLevel < MaxBeltLevel)
         {
             moneyManager.Money -= TotalCost;
 
