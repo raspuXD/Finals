@@ -9,6 +9,7 @@ public class Ingredient : MonoBehaviour
 
     public State ingredientType;
     public Sprite image;
+    public GameObject theInfoHolder;
     public TMP_Text theCardNameText;
 
     public enum State
