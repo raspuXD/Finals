@@ -1,19 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class OrderSlots : MonoBehaviour
 {
-    public WholeFood theOrderedFood;
+    public Customer theCustomerScript;
+    public WholeFood theCurrentOne;
     public Slot slot1, slot2, slot3;
 
     public bool slot1Correct, slot2Correct, slot3Correct;
+    public TMP_Text theOrderText;
 
     void Update()
     {
+        if(theCurrentOne == null)
+        {
+            theCurrentOne = theCustomerScript.selectedCustomer.theFoodCustomerWants;
+
+            theOrderText.text = theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient1.ToString() + "<br>"
+                + theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient2.ToString()+ "<br>" +
+                theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient3.ToString();
+        }
+
         if(slot1.theIngredient != null)
         {
-            if (slot1.theIngredient.ingredientType == theOrderedFood.ingredient1)
+            if (slot1.theIngredient.ingredientType == theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient1)
             {
                 slot1Correct = true;
             }
@@ -30,7 +42,7 @@ public class OrderSlots : MonoBehaviour
 
         if (slot2.theIngredient != null)
         {
-            if (slot2.theIngredient.ingredientType == theOrderedFood.ingredient2)
+            if (slot2.theIngredient.ingredientType == theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient2)
             {
                 slot2Correct = true;
             }
@@ -47,7 +59,7 @@ public class OrderSlots : MonoBehaviour
 
         if (slot3.theIngredient != null)
         {
-            if (slot3.theIngredient.ingredientType == theOrderedFood.ingredient3)
+            if (slot3.theIngredient.ingredientType == theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient3)
             {
                 slot3Correct = true;
             }
