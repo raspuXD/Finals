@@ -99,13 +99,26 @@ public class ConveyorManager : MonoBehaviour
         {
             item.transform.position = resetPoint.position;
 
-            // Remove the teleported item from the list after teleporting
-            teleportedItems.Remove(item);
+            // Optional: Stop movement briefly
+            ConveyorItem conveyorItem = item.GetComponent<ConveyorItem>();
+            if (conveyorItem != null)
+            {
+                conveyorItem.enabled = false;
+                StartCoroutine(EnableAfterDelay(conveyorItem, 0.75f));
+            }
 
-            // Start cooldown after teleporting an item
+            teleportedItems.Remove(item);
             StartCooldown();
         }
     }
+
+    IEnumerator EnableAfterDelay(MonoBehaviour script, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        script.enabled = true;
+    }
+
+
 
     void StartCooldown()
     {
