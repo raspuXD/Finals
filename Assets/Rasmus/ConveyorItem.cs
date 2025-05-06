@@ -12,13 +12,12 @@ public class ConveyorItem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collided with: " + other.name);
+
+        // Check if the item collided with a "ResetZone"
         if (other.CompareTag("ResetZone"))
         {
-            Transform resetPoint = ConveyorManager.Instance.GetResetPoint();
-            if (resetPoint != null)
-            {
-                transform.position = resetPoint.position;
-            }
+            // Add the item to the teleport list in ConveyorManager
+            ConveyorManager.Instance.AddItemToTeleportList(gameObject);
         }
     }
 }

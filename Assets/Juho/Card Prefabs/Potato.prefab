@@ -112,8 +112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 3.4462}
-  m_SizeDelta: {x: 7.6499, y: 1.6525}
+  m_AnchoredPosition: {x: 0, y: 3.8561}
+  m_SizeDelta: {x: 7.6499, y: 2.4722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1545811835774207679
 Canvas:
@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 6718351449086353977}
   - component: {fileID: 1836936850182817689}
   - component: {fileID: 8331224075471373549}
+  - component: {fileID: -4620989638740173975}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Untagged
@@ -324,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce902b5d378d7f4d9b9e6e59bd54f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasBeenBough: 0
   whatIsThis: 0
 --- !u!114 &1836936850182817689
 MonoBehaviour:
@@ -342,6 +344,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 42bd497104b802b4aac5551cf6c54c74, type: 3}
   theInfoHolder: {fileID: 1437482995474156358}
   theCardNameText: {fileID: 3104579534290928378}
+  theCost: 6
 --- !u!50 &8331224075471373549
 Rigidbody2D:
   serializedVersion: 4
@@ -369,6 +372,19 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-4620989638740173975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2897952138825287728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fce0b8422a8b03419a618c93a7d689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
 --- !u!1 &7752430046028764091
 GameObject:
   m_ObjectHideFlags: 0

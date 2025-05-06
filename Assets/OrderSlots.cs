@@ -6,7 +6,6 @@ using UnityEngine;
 public class OrderSlots : MonoBehaviour
 {
     public Customer theCustomerScript;
-    public WholeFood theCurrentOne;
     public Slot slot1, slot2, slot3;
 
     public bool slot1Correct, slot2Correct, slot3Correct;
@@ -14,10 +13,8 @@ public class OrderSlots : MonoBehaviour
 
     void Update()
     {
-        if(theCurrentOne == null)
+        if(theCustomerScript.selectedCustomer.theFoodCustomerWants != null)
         {
-            theCurrentOne = theCustomerScript.selectedCustomer.theFoodCustomerWants;
-
             theOrderText.text = theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient1.ToString() + "<br>"
                 + theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient2.ToString()+ "<br>" +
                 theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient3.ToString();

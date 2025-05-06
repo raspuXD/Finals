@@ -11,6 +11,7 @@ public class Ingredient : MonoBehaviour
     public Sprite image;
     public GameObject theInfoHolder;
     public TMP_Text theCardNameText;
+    public int theCost;
 
     public enum State
     {
