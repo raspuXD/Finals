@@ -32,8 +32,7 @@ public class Customer : MonoBehaviour
     public GameObject buttonHolder;
 
     [Header("Accept")]
-    [SerializeField] GameObject[] toActivate;
-    [SerializeField] GameObject[] toDeactiavte;
+    [SerializeField] FullFade fullFade;
 
     private void Start()
     {
@@ -42,14 +41,7 @@ public class Customer : MonoBehaviour
 
     public void Accepct()
     {
-        foreach(GameObject gameObject in toActivate)
-        {
-            gameObject.SetActive(true);
-        }
-        foreach (GameObject gameObject in toDeactiavte)
-        {
-            gameObject.SetActive(false);
-        }
+        fullFade.StartFullFade();
      }
 
     public void Decline()
