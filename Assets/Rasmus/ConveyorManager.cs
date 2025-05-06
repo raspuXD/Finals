@@ -12,6 +12,7 @@ public class ConveyorManager : MonoBehaviour
     public int BeltLevel = 1;
     public int BeltCost;
     public int TotalCost;
+    public GameObject UpgradeButton;
 
     [Header("Spawning")]
     // Separate lists for each level; add or remove levels as needed
@@ -46,8 +47,10 @@ public class ConveyorManager : MonoBehaviour
 
     void Start()
     {
+        TotalCost = BeltCost * BeltLevel;
         StartCoroutine(SpawnLoop());
     }
+
 
     void Update()
     {
@@ -65,14 +68,25 @@ public class ConveyorManager : MonoBehaviour
         if(TotalCost <= moneyManager.Money)
         {
             Debug.Log("MORE MONEY BUT BELT");
+            UpgradeButton.SetActive(true);
+        }
+        else
+        {
+            UpgradeButton.SetActive(false);
         }
     }
     public void UpgradeBelt()
     {
-        TotalCost = BeltCost *= BeltLevel;
+        if (moneyManager.Money >= TotalCost)
+        {
+            moneyManager.Money -= TotalCost;
 
-        moneyManager.Money -= TotalCost;
+            BeltLevel++; // Actually upgrade the level
+            TotalCost = BeltCost * BeltLevel; // New cost is base cost * new level
+            Debug.Log($"Belt upgraded to level {BeltLevel}. Next cost: {TotalCost}");
+        }
     }
+
     IEnumerator SpawnLoop()
     {
         while (true)
