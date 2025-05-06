@@ -134,13 +134,85 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fun SText
       objectReference: {fileID: 0}
+    - target: {fileID: 741880516929598500, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137556952327658465, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137556952327658465, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332212056312427081, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d6cb9aae63146a45a9e82e2008b76ca, type: 2}
+    - target: {fileID: 1332212056312427081, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.19215687
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332212056312427081, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.11372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332212056312427081, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.654902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332212056312427081, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6762388587636630772, guid: 0d6cb9aae63146a45a9e82e2008b76ca, type: 2}
+    - target: {fileID: 1332212056312427081, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4281408935
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332212056312427081, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908110777458835738, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 648.9493
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908110777458835738, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.6796
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176557952227039925, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontSize
+      value: 169.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176557952227039925, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d6cb9aae63146a45a9e82e2008b76ca, type: 2}
+    - target: {fileID: 3176557952227039925, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 169.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176557952227039925, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6762388587636630772, guid: 0d6cb9aae63146a45a9e82e2008b76ca, type: 2}
+    - target: {fileID: 3176557952227039925, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176557952227039925, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontColorGradientPreset
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4099638747814674132, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
       propertyPath: m_Name
       value: Game Start Warning Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 5022299880316876194, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5295212537794790067, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
       propertyPath: m_LocalPosition.x
@@ -184,7 +256,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5888804504628970691, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
       propertyPath: m_text
-      value: This game has a blind cheff
+      value: 'This game has a blind cheff so watch out for a knife! Nah im kidding!
+        hes the best chef in the wrold! Even if blind he will absolutly cook!
+
+
+        Have
+        fun playing this!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888804504628970691, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontSize
+      value: 78.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888804504628970691, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d3136a3462f515c46b8f34fc8808437f, type: 2}
+    - target: {fileID: 5888804504628970691, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 78.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888804504628970691, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -633065373592363691, guid: d3136a3462f515c46b8f34fc8808437f, type: 2}
+    - target: {fileID: 5888804504628970691, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888804504628970691, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_fontColorGradientPreset
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685115518762155507, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685115518762155507, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_Color.g
+      value: 0.050980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 7685115518762155507, guid: 68adf685d3f392a4ab8a37c7cd86b787, type: 3}
+      propertyPath: m_Color.r
+      value: 0.24705882
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
