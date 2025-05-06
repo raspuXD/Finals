@@ -4,11 +4,11 @@ using TMPro;
 
 public class MoneyManager : MonoBehaviour
 {
-    public float Money;
+    public int Money;                       // Changed from float to int
     public TextMeshProUGUI moneyText;
 
-    public float fadeDelay = 3f;         // Time before fading starts
-    public float fadeDuration = 1f;      // Duration of fade
+    public float fadeDelay = 3f;            // Time before fading starts
+    public float fadeDuration = 1f;         // Duration of fade
     private float lastChangeTime;
     private CanvasGroup canvasGroup;
 
@@ -41,36 +41,55 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public void DecreaseMoney(float amount)
+    public void DecreaseMoney(int amount)   // Changed from float to int
     {
         Money -= amount;
-        if (Money <= 0)
+        if (Money < 0)
         {
+            Money = 0; // Prevent negative money
             NoMoney();
         }
-        TriggerMoneyChange();
+        TriggerMoneyChange(true);
     }
 
-    public void IncreaseMoney(float amount)
+    public void IncreaseMoney(int amount)   // Changed from float to int
     {
         Money += amount;
-        TriggerMoneyChange();
+        TriggerMoneyChange(true);
     }
 
-    void TriggerMoneyChange()
+    void TriggerMoneyChange(bool wannaUpdate)
     {
-        UpdateMoneyDisplay();
+        if(wannaUpdate)
+        {
+            UpdateMoneyDisplay();
+        }
         lastChangeTime = Time.time;
         canvasGroup.alpha = 1f; // Reset fade on activity
     }
 
     void UpdateMoneyDisplay()
     {
-        moneyText.text = "$" + Money.ToString("F2");
+        moneyText.text = Money.ToString() + "€";
     }
 
     public void NoMoney()
     {
         Debug.Log("GameOver");
+    }
+
+    // Hover method to show the amount after hover
+    public void Hover(int amount)
+    {
+        TriggerMoneyChange(false);
+
+        if(amount < 0)
+        {
+            moneyText.text = Money.ToString() + "€   " + amount.ToString() + "€";
+        }
+        else
+        {
+            moneyText.text = Money.ToString() + "€   + " + amount.ToString() + "€";
+        }
     }
 }

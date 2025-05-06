@@ -14,6 +14,7 @@ public class DragAndDrop : MonoBehaviour
     [SerializeField] bool hasBeenBough = false;
     public ItemType whatIsThis;
     bool isInMoveZone = true;
+    MoneyManager mane;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -88,6 +89,7 @@ public class DragAndDrop : MonoBehaviour
     {
         ingredient = GetComponent<Ingredient>();
         beltItem = GetComponent<ConveyorItem>();
+        mane = FindObjectOfType<MoneyManager>();
     }
 
     void OnMouseDown()
@@ -95,7 +97,7 @@ public class DragAndDrop : MonoBehaviour
         if (!hasBeenBough)
         {
             hasBeenBough = true;
-            Debug.Log(ingredient.theCost);
+            mane.DecreaseMoney(ingredient.theCost);
         }
 
         beltItem.enabled = false;
@@ -121,6 +123,7 @@ public class DragAndDrop : MonoBehaviour
 
         if (!hasBeenBough)
         {
+            mane.Hover(-ingredient.theCost);
             ingredient.theCardNameText.text = ingredient.theCost + "€<br>" + ingredient.nameForIngredient;
         }
         else
