@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ef932530cdda3843b7dc5f503d55b3e, type: 3}
-  m_Name: NormalSpagetti
+  m_Name: burger
   m_EditorClassIdentifier: 
-  foodName: Spagetti with meat souce
+  foodName: Burger
   image: {fileID: 21300000, guid: cf38b80463f748248a8340663a3af540, type: 3}
-  ingredient1: 0
-  ingredient2: 0
+  ingredient1: 2
+  ingredient2: 1
   ingredient3: 1

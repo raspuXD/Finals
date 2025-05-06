@@ -540,10 +540,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potato
       objectReference: {fileID: 0}
-    - target: {fileID: 6718351449086353977, guid: 4ed7f8edbb15eee489affc43067a6227, type: 3}
-      propertyPath: whatIsThis
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1066,10 +1062,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9065383090548669532, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
-      propertyPath: whatIsThis
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1254,7 +1246,7 @@ MonoBehaviour:
   hasAItemInIt: 0
   currentItem: {fileID: 0}
   theIngredient: {fileID: 0}
-  whatToAcceptToSlot: 1
+  whatToAcceptToSlot: 0
 --- !u!50 &788111663
 Rigidbody2D:
   serializedVersion: 4
@@ -1464,7 +1456,7 @@ MonoBehaviour:
   hasAItemInIt: 0
   currentItem: {fileID: 0}
   theIngredient: {fileID: 0}
-  whatToAcceptToSlot: 1
+  whatToAcceptToSlot: 0
 --- !u!50 &1081855917
 Rigidbody2D:
   serializedVersion: 4
@@ -1789,6 +1781,63 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1001 &1257102129
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7090847125861746693, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_Name
+      value: Graded Cheese (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907287482417724313, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
 --- !u!1 &1266582901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,12 +1938,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f32be90b3490bc478d26d3803b5158a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needed1: {fileID: 0}
-  needed2: {fileID: 0}
-  needed3: {fileID: 0}
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
-  slot3: {fileID: 0}
+  theOrderedFood: {fileID: 11400000, guid: bed063be2f2d40a488ac229ba670cd7a, type: 2}
+  slot1: {fileID: 1120666105}
+  slot2: {fileID: 788111662}
+  slot3: {fileID: 1081855916}
+  slot1Correct: 0
+  slot2Correct: 0
+  slot3Correct: 0
 --- !u!1 &1271038123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,3 +2512,4 @@ SceneRoots:
   - {fileID: 1266582903}
   - {fileID: 286131779}
   - {fileID: 518451510}
+  - {fileID: 1257102129}

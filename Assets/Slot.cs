@@ -33,6 +33,7 @@ public class Slot : MonoBehaviour
         item.position = transform.position;
         item.rotation = transform.rotation;
         currentItem = item;
+        theIngredient = currentItem.GetComponent<Ingredient>();
         hasAItemInIt = true;
         scaleTarget.localScale = originalScale;
     }
@@ -40,6 +41,7 @@ public class Slot : MonoBehaviour
     public void ClearSlot()
     {
         currentItem.rotation = Quaternion.Euler(0f, 0f, 0f);
+        theIngredient = null;
         currentItem = null;
         hasAItemInIt = false;
         scaleTarget.localScale = originalScale;
