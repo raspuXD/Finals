@@ -16,6 +16,7 @@ public class DragAndDrop : MonoBehaviour
     bool isInMoveZone = false;
     MoneyManager mane;
     SpriteRenderer spriteRenderer;
+    Vector3 originalScale;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class DragAndDrop : MonoBehaviour
         beltItem = GetComponent<ConveyorItem>();
         mane = FindObjectOfType<MoneyManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        originalScale = transform.localScale;
     }
 
     void Update()
@@ -215,6 +217,8 @@ public class DragAndDrop : MonoBehaviour
                 cookingStyle.theCardNameText.text = cookingStyle.nameForCookingStyle;
             }
         }
+
+        transform.localScale = originalScale * 1.15f;
     }
 
     void OnMouseExit()
@@ -231,6 +235,8 @@ public class DragAndDrop : MonoBehaviour
         {
             cookingStyle.theInfoHolder.SetActive(false);
         }
+
+        transform.localScale = originalScale;
     }
 
     private void PlayFoodSpecificSound(Ingredient.State ingredientType)

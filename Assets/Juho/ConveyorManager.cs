@@ -151,7 +151,7 @@ public class ConveyorManager : MonoBehaviour
             moneyManager.DecreaseMoney(BeltCost * BeltLevel);
             BeltLevel++;
 
-            // You can add logic here to handle any changes when the belt is upgraded
+            UpgradeButton.SetActive(moneyManager.Money >= BeltCost * BeltLevel && BeltLevel < MaxBeltLevel);
         }
     }
 }
