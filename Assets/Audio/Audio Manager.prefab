@@ -184,6 +184,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a4cfa6c2e40cfc04faf211804f6aac0a, type: 3}
     useRandomPitch: 0
     pitchRange: {x: 1, y: 1}
+  - name: CustomerSong
+    clip: {fileID: 8300000, guid: c60607a918c1fbe4ba371b24a126801e, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: CookingSong
+    clip: {fileID: 8300000, guid: d8782b3f5cd516c4c829d92a98a0995e, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
   sfxSounds:
   - name: UIButton
     clip: {fileID: 8300000, guid: f44fb33ed25bc38419da40013e73aa17, type: 3}
@@ -195,6 +203,66 @@ MonoBehaviour:
     pitchRange: {x: 1, y: 1}
   - name: PopUpClickAppear
     clip: {fileID: 8300000, guid: 979b611d379249545ae679715dab4d68, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: CardPickup
+    clip: {fileID: 8300000, guid: 5a62bf12423c3f043acafce969a66e40, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: CardPlace
+    clip: {fileID: 8300000, guid: fe3931d78e238f74ebdaff5320655d73, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: GratedCheese
+    clip: {fileID: 8300000, guid: 10419a57a0c68cb4895175a0473fd6f2, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Vegetable
+    clip: {fileID: 8300000, guid: 183556f855be1a146a3421f98955614d, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Meat
+    clip: {fileID: 8300000, guid: bc47a366cd24e8b449db8f34ff37fed4, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Spaghetti
+    clip: {fileID: 8300000, guid: c97439ea4c87d0d47bcb12fca9f5e8f5, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Water
+    clip: {fileID: 8300000, guid: 39e10000b1d87974492fbbffc7caf049, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Cheese
+    clip: {fileID: 8300000, guid: 5c35148d8eff51945b7c4845cb4fdd40, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Lemon
+    clip: {fileID: 8300000, guid: ba248bd0c4ddf5f49b16a62995e4b99d, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Frying
+    clip: {fileID: 8300000, guid: 87ed7260cf6797942adcca9e77629824, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Steam
+    clip: {fileID: 8300000, guid: a1abfa61dcea0bf409200d6a1227f2a3, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Grill
+    clip: {fileID: 8300000, guid: 723efb11ad9ae254e9b246eb88e66e9a, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: Spice
+    clip: {fileID: 8300000, guid: bafa8818d25a95248a15765908a652ba, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: ManSpeak
+    clip: {fileID: 8300000, guid: 413b5517f79ef984da9256f91256e783, type: 3}
+    useRandomPitch: 0
+    pitchRange: {x: 1, y: 1}
+  - name: WomanSpeak
+    clip: {fileID: 8300000, guid: 9cc92fc930fe1aa4280c78cf2f6156ca, type: 3}
     useRandomPitch: 0
     pitchRange: {x: 1, y: 1}
   musicSource: {fileID: 4180836528979327869}

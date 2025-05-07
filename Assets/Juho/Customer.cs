@@ -21,7 +21,9 @@ public class Customer : MonoBehaviour
     public WholeFood[] foodsToBeWantedBeltLeve3;
     public int whatLevelBelt = 1; // between 1-3
     public CustomerData selectedCustomer;
+    bool isMan = false;
 
+    public MoneyManager moneyManager;
 
     [Header("Visual")]
     public Image theCustomerUIImage, anotherOne;
@@ -35,8 +37,7 @@ public class Customer : MonoBehaviour
     [Header("Accept")]
     [SerializeField] FullFade fullFade;
 
-   // [Header("Timer")]
-    //public TimerScript timerScript;  // Reference to the TimerScript
+
 
 
     private void Start()
@@ -47,8 +48,6 @@ public class Customer : MonoBehaviour
     public void Accepct()
     {
         fullFade.StartFullFade();
-       // timerScript.StartTimer();
-       // timerScript.ResetTimer();
     }
 
     public void FinishTheCustomer()
@@ -61,10 +60,6 @@ public class Customer : MonoBehaviour
         speakCloud.gameObject.SetActive(false);
         theCustomerUIImage.color = new Color(1, 1, 1, 0); // Make invisible
 
-        // Stop timer
-       // timerScript.StopTimer();
-       //timerScript.ResetTimer();
-//
         // Reset customer data
         MoneyManager money = FindObjectOfType<MoneyManager>();
         money.IncreaseMoney(selectedCustomer.theFoodCustomerWants.maxCost);
@@ -84,8 +79,7 @@ public class Customer : MonoBehaviour
         StartCoroutine(FadeOutText(nameText));
         StartCoroutine(FadeOutText(theSpeakText));
         StartCoroutine(WaitBeforeNewCustomer());
-        //timerScript.StopTimer();
-       // timerScript.ResetTimer();
+        moneyManager.DecreaseMoney(10);
     }
 
     public IEnumerator WaitBeforeNewCustomer()
@@ -97,12 +91,15 @@ public class Customer : MonoBehaviour
 
     public void SpawnNewCustomer()
     {
+        isMan = false;
+
         if (Random.value > 0.5f)  // Randomly decide between male and female
         {
             selectedCustomer = womanCustomers[Random.Range(0, womanCustomers.Length)];
             theCustomerUIImage.sprite = womanSprites[Random.Range(0, womanSprites.Length)];
             anotherOne.sprite = womanSprites[Random.Range(0, womanSprites.Length)];
             nameText.text = womanNames[Random.Range(0, womanNames.Length)];  // Set the name for the woman
+            isMan = false ;
         }
         else
         {
@@ -110,6 +107,7 @@ public class Customer : MonoBehaviour
             theCustomerUIImage.sprite = manSprites[Random.Range(0, manSprites.Length)];
             anotherOne.sprite = manSprites[Random.Range(0, manSprites.Length)];
             nameText.text = manNames[Random.Range(0, manNames.Length)];  // Set the name for the man
+            isMan = true;
         }
 
         // Based on whatLevelBelt, select the correct food
@@ -181,10 +179,30 @@ public class Customer : MonoBehaviour
     IEnumerator TypeSentence(CustomerData selectedCustomer)
     {
         string fullSentence = selectedCustomer.theLineToBeSaid + " " + selectedCustomer.theFoodCustomerWants.foodName;
+        int letterCounter = 0;
+        int nextDebugAt = Random.Range(1, 5); // Random.Range is inclusive of min and exclusive of max for ints
+
+        theSpeakText.text = ""; // Clear text before typing
 
         foreach (char letter in fullSentence)
         {
             theSpeakText.text += letter;
+            letterCounter++;
+
+            if (letterCounter >= nextDebugAt)
+            {
+                if (isMan)
+                {
+                    AudioManager.Instance.PlaySFX("ManSpeak");
+                }
+                else
+                {
+                    AudioManager.Instance.PlaySFX("WomanSpeak");
+                }
+                letterCounter = 0;
+                nextDebugAt = Random.Range(3, 5); // Set new threshold for next debug
+            }
+
             yield return new WaitForSeconds(howFastWritesLetter);
         }
 
