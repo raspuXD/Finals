@@ -7,6 +7,8 @@ public class DragAndDrop : MonoBehaviour
     private float timer = 0f; // Timer for counting inactive time
     private const float timeToDestroy = 45f; // Time before destruction
     Ingredient ingredient;
+    CookingStyle cookingStyle;
+    Seasoning seasoning;
     Slot highlightedSlot;
     Slot currentSlot;
     Slot previousSlot;
@@ -87,7 +89,18 @@ public class DragAndDrop : MonoBehaviour
 
     private void Start()
     {
-        ingredient = GetComponent<Ingredient>();
+        if (whatIsThis == ItemType.Ingredient)
+        {
+            ingredient = GetComponent<Ingredient>();
+        }
+        else if (whatIsThis == ItemType.Seasoning)
+        {
+            seasoning = GetComponent<Seasoning>();
+        }
+        else
+        {
+            cookingStyle = GetComponent<CookingStyle>();
+        }
         beltItem = GetComponent<ConveyorItem>();
         mane = FindObjectOfType<MoneyManager>();
     }
@@ -97,12 +110,35 @@ public class DragAndDrop : MonoBehaviour
         if (!hasBeenBough)
         {
             hasBeenBough = true;
-            mane.DecreaseMoney(ingredient.theCost);
+            if (whatIsThis == ItemType.Ingredient)
+            {
+                mane.DecreaseMoney(ingredient.theCost);
+            }
+            else if (whatIsThis == ItemType.Seasoning)
+            {
+                mane.DecreaseMoney(seasoning.theCost);
+            }
+            else
+            {
+                mane.DecreaseMoney(cookingStyle.theCost);
+            }
         }
 
         beltItem.enabled = false;
         isDragging = true;
-        ingredient.theInfoHolder.SetActive(false);
+
+        if (whatIsThis == ItemType.Ingredient)
+        {
+            ingredient.theInfoHolder.SetActive(false);
+        }
+        else if (whatIsThis == ItemType.Seasoning)
+        {
+            seasoning.theInfoHolder.SetActive(false);
+        }
+        else
+        {
+            cookingStyle.theInfoHolder.SetActive(false);
+        }
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         offset = transform.position - mousePosition;
@@ -119,22 +155,64 @@ public class DragAndDrop : MonoBehaviour
 
     private void OnMouseOver()
     {
-        ingredient.theInfoHolder.SetActive(true);
-
-        if (!hasBeenBough)
+        if (whatIsThis == ItemType.Ingredient)
         {
-            mane.Hover(-ingredient.theCost);
-            ingredient.theCardNameText.text = ingredient.theCost + "€<br>" + ingredient.nameForIngredient;
+            ingredient.theInfoHolder.SetActive(true);
+
+            if (!hasBeenBough)
+            {
+                mane.Hover(-ingredient.theCost);
+                ingredient.theCardNameText.text = ingredient.theCost + "€<br>" + ingredient.nameForIngredient;
+            }
+            else
+            {
+                ingredient.theCardNameText.text = ingredient.nameForIngredient;
+            }
+        }
+        else if (whatIsThis == ItemType.Seasoning)
+        {
+            seasoning.theInfoHolder.SetActive(true);
+
+            if (!hasBeenBough)
+            {
+                mane.Hover(-seasoning.theCost);
+                seasoning.theCardNameText.text = seasoning.theCost + "€<br>" + seasoning.nameForSeasoning;
+            }
+            else
+            {
+                seasoning.theCardNameText.text = seasoning.nameForSeasoning;
+            }
         }
         else
         {
-            ingredient.theCardNameText.text = ingredient.nameForIngredient;
+            cookingStyle.theInfoHolder.SetActive(true);
+
+            if (!hasBeenBough)
+            {
+                mane.Hover(-cookingStyle.theCost);
+                cookingStyle.theCardNameText.text = cookingStyle.theCost + "€<br>" + cookingStyle.nameForCookingStyle;
+            }
+            else
+            {
+                cookingStyle.theCardNameText.text = cookingStyle.nameForCookingStyle;
+            }
         }
     }
 
     private void OnMouseExit()
     {
-        ingredient.theInfoHolder.SetActive(false);
+        if (whatIsThis == ItemType.Ingredient)
+        {
+            ingredient.theInfoHolder.SetActive(false);
+        }
+        else if (whatIsThis == ItemType.Seasoning)
+        {
+            seasoning.theInfoHolder.SetActive(false);
+        }
+        else
+        {
+            cookingStyle.theInfoHolder.SetActive(false);
+        }
     }
 
     void Update()
