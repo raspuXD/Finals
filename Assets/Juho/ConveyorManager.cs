@@ -8,15 +8,14 @@ public class ConveyorManager : MonoBehaviour
 
     public MoneyManager moneyManager;
 
-    public bool isEquipmentConveyor = false;
     public int BeltLevel = 1;
     public int BeltCost;
     public int MaxBeltLevel = 3;
 
     public GameObject UpgradeButton;
 
-    public Transform spawnPoint;
-    public Transform resetPoint;
+    public Transform productSpawnPoint; // Spawn point for products
+    public Transform equipmentSpawnPoint; // Spawn point for equipment
 
     public float MinSpawnInterval = 8f;
     public float MaxSpawnInterval = 12f;
@@ -30,27 +29,17 @@ public class ConveyorManager : MonoBehaviour
     public List<GameObject> equipmentLevel2Prefabs;
     public List<GameObject> equipmentLevel3Prefabs;
 
-    private Queue<GameObject> itemQueue = new Queue<GameObject>();
-    private Queue<GameObject> currentPrefabQueue = new Queue<GameObject>();
-
     private bool isCooldown = false;
     private float cooldownTimer = 0f;
 
     void Awake()
     {
-        if (!isEquipmentConveyor && Instance == null)
+        if (Instance == null)
             Instance = this;
     }
 
     void Start()
     {
-        List<GameObject> initialList = GetCurrentPrefabListLegacy();
-        foreach (var prefab in initialList)
-        {
-            if (!currentPrefabQueue.Contains(prefab))
-                currentPrefabQueue.Enqueue(prefab);
-        }
-
         StartCoroutine(SpawnLoop());
     }
 
@@ -72,7 +61,7 @@ public class ConveyorManager : MonoBehaviour
         {
             if (!isCooldown)
             {
-                HandleNextItem();
+                SpawnNewItem();
                 yield return new WaitForSeconds(Random.Range(MinSpawnInterval, MaxSpawnInterval));
             }
             else
@@ -82,54 +71,25 @@ public class ConveyorManager : MonoBehaviour
         }
     }
 
-    void HandleNextItem()
-    {
-        if (itemQueue.Count > 0)
-        {
-            GameObject item = itemQueue.Dequeue();
-
-            if (item != null)
-            {
-                item.transform.position = resetPoint.position;
-
-                ConveyorItem conveyorItem = item.GetComponent<ConveyorItem>();
-                if (conveyorItem != null)
-                {
-                    conveyorItem.enabled = false;
-                    StartCoroutine(EnableAfterDelay(conveyorItem, 0.75f));
-                }
-
-                TryAddToQueue(item);
-
-                StartCooldown();
-            }
-        }
-        else
-        {
-            SpawnNewItem();
-        }
-    }
-
     void SpawnNewItem()
     {
-        if (currentPrefabQueue.Count == 0) return;
-
-        GameObject prefab = currentPrefabQueue.Dequeue();
-        GameObject newItem = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-
-        ConveyorItem conveyorItem = newItem.GetComponent<ConveyorItem>();
-        if (conveyorItem != null)
+        // Spawn product
+        List<GameObject> productPrefabs = GetProductPrefabList();
+        if (productPrefabs.Count > 0)
         {
-            conveyorItem.theBelt = this;
+            GameObject productPrefab = productPrefabs[Random.Range(0, productPrefabs.Count)];
+            Instantiate(productPrefab, productSpawnPoint.position, Quaternion.identity);
+        }
+
+        // Spawn equipment
+        List<GameObject> equipmentPrefabs = GetEquipmentPrefabList();
+        if (equipmentPrefabs.Count > 0)
+        {
+            GameObject equipmentPrefab = equipmentPrefabs[Random.Range(0, equipmentPrefabs.Count)];
+            Instantiate(equipmentPrefab, equipmentSpawnPoint.position, Quaternion.identity);
         }
 
         StartCooldown();
-    }
-
-    IEnumerator EnableAfterDelay(MonoBehaviour script, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        script.enabled = true;
     }
 
     void StartCooldown()
@@ -138,36 +98,25 @@ public class ConveyorManager : MonoBehaviour
         cooldownTimer = actionCooldown;
     }
 
-    void TryAddToQueue(GameObject item)
+    List<GameObject> GetProductPrefabList()
     {
-        GameObject prefab = item.GetComponent<ConveyorItem>()?.PrefabReference; // You should store the original prefab in the item when instantiating
-        if (prefab != null && !currentPrefabQueue.Contains(prefab))
+        switch (BeltLevel)
         {
-            currentPrefabQueue.Enqueue(prefab);
+            case 1: return productLevel1Prefabs;
+            case 2: return productLevel2Prefabs;
+            case 3: return productLevel3Prefabs;
+            default: return productLevel1Prefabs;
         }
     }
 
-    List<GameObject> GetCurrentPrefabListLegacy()
+    List<GameObject> GetEquipmentPrefabList()
     {
-        if (isEquipmentConveyor)
+        switch (BeltLevel)
         {
-            return BeltLevel switch
-            {
-                1 => equipmentLevel1Prefabs,
-                2 => equipmentLevel2Prefabs,
-                3 => equipmentLevel3Prefabs,
-                _ => equipmentLevel1Prefabs
-            };
-        }
-        else
-        {
-            return BeltLevel switch
-            {
-                1 => productLevel1Prefabs,
-                2 => productLevel2Prefabs,
-                3 => productLevel3Prefabs,
-                _ => productLevel1Prefabs
-            };
+            case 1: return equipmentLevel1Prefabs;
+            case 2: return equipmentLevel2Prefabs;
+            case 3: return equipmentLevel3Prefabs;
+            default: return equipmentLevel1Prefabs;
         }
     }
 
@@ -178,22 +127,9 @@ public class ConveyorManager : MonoBehaviour
             moneyManager.DecreaseMoney(GetTotalCost());
             BeltLevel++;
 
-            List<GameObject> newLevelPrefabs = GetCurrentPrefabListLegacy();
-            foreach (var prefab in newLevelPrefabs)
-            {
-                if (!currentPrefabQueue.Contains(prefab))
-                    currentPrefabQueue.Enqueue(prefab);
-            }
+            // You can add logic here to handle any changes when the belt is upgraded
         }
     }
 
     int GetTotalCost() => BeltCost * BeltLevel;
-
-    public void AddItemToQueue(GameObject item)
-    {
-        if (!itemQueue.Contains(item))
-        {
-            itemQueue.Enqueue(item);
-        }
-    }
 }
