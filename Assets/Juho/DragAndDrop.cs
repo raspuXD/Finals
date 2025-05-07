@@ -13,7 +13,7 @@ public class DragAndDrop : MonoBehaviour
     ConveyorItem beltItem;
     [SerializeField] bool hasBeenBough = false;
     public ItemType whatIsThis;
-    bool isInMoveZone = true;
+    bool isInMoveZone = false;
     MoneyManager mane;
 
     void OnTriggerEnter2D(Collider2D other)

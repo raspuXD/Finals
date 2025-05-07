@@ -324,7 +324,6 @@ GameObject:
   - component: {fileID: 3195009283298355769}
   - component: {fileID: 2045086973620973131}
   - component: {fileID: 9122595242059798210}
-  - component: {fileID: 1192207782297677893}
   - component: {fileID: 7180932082398479262}
   - component: {fileID: 811667313897327402}
   - component: {fileID: 9043806582516887478}
@@ -462,24 +461,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasBeenBough: 0
   whatIsThis: 2
---- !u!114 &1192207782297677893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7286477274924505786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8810ea5acd787564eb24680716ff6f54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameForIngredient: Graded Cheese
-  ingredientType: 0
-  image: {fileID: 21300000, guid: d5d5e8dc07b8d414281cc1743a92b383, type: 3}
-  theInfoHolder: {fileID: 2877489853406647818}
-  theCardNameText: {fileID: 8973619572453667277}
-  theCost: 4
 --- !u!50 &7180932082398479262
 Rigidbody2D:
   serializedVersion: 4

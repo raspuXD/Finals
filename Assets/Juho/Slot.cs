@@ -10,6 +10,8 @@ public class Slot : MonoBehaviour
     public bool hasAItemInIt = false;
     public Transform currentItem;
     public Ingredient theIngredient;
+    public Seasoning theSeasoning;
+    public CookingStyle theCookingStyle;
 
     public ItemType whatToAcceptToSlot;
 
@@ -33,7 +35,18 @@ public class Slot : MonoBehaviour
         item.position = transform.position;
         item.rotation = transform.rotation;
         currentItem = item;
-        theIngredient = currentItem.GetComponent<Ingredient>();
+        if(whatToAcceptToSlot == ItemType.Ingredient)
+        {
+            theIngredient = currentItem.GetComponent<Ingredient>();
+        }
+        else if(whatToAcceptToSlot == ItemType.Seasoning)
+        {
+            theSeasoning = currentItem.GetComponent<Seasoning>();
+        }
+        else
+        {
+            theCookingStyle = currentItem.GetComponent<CookingStyle>();
+        }
         hasAItemInIt = true;
         scaleTarget.localScale = originalScale;
     }
@@ -42,6 +55,8 @@ public class Slot : MonoBehaviour
     {
         currentItem.rotation = Quaternion.Euler(0f, 0f, 0f);
         theIngredient = null;
+        theSeasoning = null;
+        theCookingStyle = null;
         currentItem = null;
         hasAItemInIt = false;
         scaleTarget.localScale = originalScale;

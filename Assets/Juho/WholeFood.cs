@@ -8,5 +8,7 @@ public class WholeFood : ScriptableObject
     public Ingredient.State ingredient1;
     public Ingredient.State ingredient2;
     public Ingredient.State ingredient3;
+    public CookingStyle.State cookingStyle;
+    public Seasoning.State seasoning;
     public int minCost, maxCost;
 }
