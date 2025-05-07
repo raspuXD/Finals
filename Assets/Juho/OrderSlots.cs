@@ -39,11 +39,14 @@ public class OrderSlots : MonoBehaviour
 
     public void DestroyAllMUHAHAHA()
     {
-        Destroy(slot1.currentItem.gameObject);
-        Destroy(slot2.currentItem.gameObject);
-        Destroy(slot3.currentItem.gameObject);
-        Destroy(slot4.currentItem.gameObject);
-        Destroy(slot5.currentItem.gameObject);
+        if(slot1 != null)
+        {
+            Destroy(slot1.currentItem.gameObject);
+            Destroy(slot2.currentItem.gameObject);
+            Destroy(slot3.currentItem.gameObject);
+            Destroy(slot4.currentItem.gameObject);
+            Destroy(slot5.currentItem.gameObject);
+        }
     }
 
     void CheckMark()
