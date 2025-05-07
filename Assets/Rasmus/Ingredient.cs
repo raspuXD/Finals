@@ -20,7 +20,13 @@ public class Ingredient : MonoBehaviour
         Jauheliha,
         Spagetti,
         Water,
-        Tomato
+        Tomato,
+        CheeseSlice,
+        Puns,
+        Steak,
+        Lemon,
+        Salmon,
+        Rice
     }
 
     public void Start()

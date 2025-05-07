@@ -8999,9 +8999,21 @@ MonoBehaviour:
   BeltCost: 0
   TotalCost: 0
   UpgradeButton: {fileID: 2724530455721380650}
-  level1Prefabs: []
-  level2Prefabs: []
-  level3Prefabs: []
+  level1Prefabs:
+  - {fileID: 7090847125861746693, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+  - {fileID: 2897952138825287728, guid: 6be0ebd1371f90e4a8377ffc92bc34e3, type: 3}
+  - {fileID: 2897952138825287728, guid: 4ed7f8edbb15eee489affc43067a6227, type: 3}
+  - {fileID: 2897952138825287728, guid: 73112d70a8cf35341b99c514ec210860, type: 3}
+  - {fileID: 2897952138825287728, guid: 92036dec29e6cac488a343a78227a45c, type: 3}
+  - {fileID: 2897952138825287728, guid: 29bcf788083a819469241d4790fc23df, type: 3}
+  level2Prefabs:
+  - {fileID: 7090847125861746693, guid: 7cb2398399a64874dba59117c3014c41, type: 3}
+  - {fileID: 7090847125861746693, guid: 3f6fea9da8f205540a465f0ff48b5564, type: 3}
+  - {fileID: 7090847125861746693, guid: c07d0aa293a301b4eba5771c2bc895b0, type: 3}
+  level3Prefabs:
+  - {fileID: 7090847125861746693, guid: c6b1b9d66b0ca6c41a74b5c99813b885, type: 3}
+  - {fileID: 7090847125861746693, guid: b03768ab9030e754a9db40dff765abc1, type: 3}
+  - {fileID: 7090847125861746693, guid: 95366e2d05111c14c97cd797953ebfef, type: 3}
   spawnPoint: {fileID: 1960324783}
   resetPoint: {fileID: 1960324783}
   MinSpawnInterval: 6
