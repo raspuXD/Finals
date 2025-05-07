@@ -44,18 +44,20 @@ public class MoneyManager : MonoBehaviour
     public void DecreaseMoney(int amount)   // Changed from float to int
     {
         Money -= amount;
-        if (Money < 0)
+        if (Money <= 0)
         {
             Money = 0; // Prevent negative money
             NoMoney();
         }
         TriggerMoneyChange(true);
+        ConveyorManager.Instance.UpdateUpgradeButtonState();
     }
 
     public void IncreaseMoney(int amount)   // Changed from float to int
     {
         Money += amount;
         TriggerMoneyChange(true);
+        ConveyorManager.Instance.UpdateUpgradeButtonState();
     }
 
     void TriggerMoneyChange(bool wannaUpdate)
@@ -76,6 +78,8 @@ public class MoneyManager : MonoBehaviour
     public void NoMoney()
     {
         Debug.Log("GameOver");
+        SceneHandler Scene = FindAnyObjectByType<SceneHandler>();
+        Scene.LoadSceneNamed("lostallmoney");
     }
 
     // Hover method to show the amount after hover
