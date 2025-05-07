@@ -22,6 +22,7 @@ public class Customer : MonoBehaviour
     public int whatLevelBelt = 1; // between 1-3
     public CustomerData selectedCustomer;
 
+
     [Header("Visual")]
     public Image theCustomerUIImage;
     public float howFastFadesInAndOut = .5f;

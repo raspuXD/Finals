@@ -65,32 +65,47 @@ public class ConveyorManager : MonoBehaviour
                 canTeleport = true;        // Allow teleporting again
             }
         }
+        // Ensure TotalCost is updated every frame
+        TotalCost = BeltCost * BeltLevel;
 
-        if(TotalCost <= moneyManager.Money)
+        if (moneyManager.Money >= TotalCost && BeltLevel < MaxBeltLevel)
         {
-            Debug.Log("MORE MONEY BUT BELT");
             UpgradeButton.SetActive(true);
         }
         else
         {
             UpgradeButton.SetActive(false);
         }
+
     }
+
+    public void UpdateUpgradeButtonState()
+    {
+        TotalCost = BeltCost * BeltLevel;
+
+        bool canAfford = moneyManager.Money >= TotalCost;
+        bool canUpgrade = BeltLevel < MaxBeltLevel;
+
+        UpgradeButton.SetActive(canAfford && canUpgrade);
+    }
+
     public void UpgradeBelt()
     {
         if (moneyManager.Money >= TotalCost && BeltLevel < MaxBeltLevel)
         {
-            moneyManager.Money -= TotalCost;
+            moneyManager.DecreaseMoney(TotalCost);
+            BeltLevel++;
+            TotalCost = BeltCost * BeltLevel;
 
-            BeltLevel++; // Actually upgrade the level
-            TotalCost = BeltCost * BeltLevel; // New cost is base cost * new level
             Debug.Log($"Belt upgraded to level {BeltLevel}. Next cost: {TotalCost}");
+            UpdateUpgradeButtonState();
         }
     }
 
+
     IEnumerator SpawnLoop()
     {
-        while (true)
+        while (isActiveAndEnabled)
         {
             // Only act when cooldown is inactive
             if (!isCooldownActive)
@@ -182,6 +197,7 @@ public class ConveyorManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         script.enabled = true;
+        TotalCost = BeltCost * BeltLevel;
     }
 
     void StartCooldown()
