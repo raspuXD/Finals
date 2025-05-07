@@ -905,7 +905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &187679322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1025,19 +1025,7 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1644976323}
-          m_TargetAssemblyTypeName: MoneyManager, Assembly-CSharp
-          m_MethodName: Hover
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!1 &188416820
 GameObject:
   m_ObjectHideFlags: 0
@@ -8009,6 +7997,7 @@ MonoBehaviour:
   moneyText: {fileID: 1350133492}
   fadeDelay: 3
   fadeDuration: 1
+  belt: {fileID: 1960324784}
 --- !u!114 &1644976324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8456,7 +8445,7 @@ MonoBehaviour:
   selectedCustomer:
     theLineToBeSaid: 
     theFoodCustomerWants: {fileID: 0}
-  moneyManager: {fileID: 0}
+  moneyManager: {fileID: 1644976323}
   theCustomerUIImage: {fileID: 1607489412}
   anotherOne: {fileID: 254545595}
   howFastFadesInAndOut: 1
@@ -9811,9 +9800,9 @@ MonoBehaviour:
   moneyManager: {fileID: 1644976323}
   isEquipmentConveyor: 0
   BeltLevel: 1
-  BeltCost: 0
+  BeltCost: 100
   TotalCost: 0
-  UpgradeButton: {fileID: 2724530455721380650}
+  UpgradeButton: {fileID: 187679321}
   spawnPoint: {fileID: 1960324783}
   resetPoint: {fileID: 1960324783}
   MinSpawnInterval: 6

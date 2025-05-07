@@ -11,7 +11,7 @@ public class MoneyManager : MonoBehaviour
     public float fadeDuration = 1f;         // Duration of fade
     private float lastChangeTime;
     private CanvasGroup canvasGroup;
-
+    public ConveyorManager belt;
     void Start()
     {
         if (moneyText == null)
@@ -26,8 +26,6 @@ public class MoneyManager : MonoBehaviour
         {
             canvasGroup = moneyText.gameObject.AddComponent<CanvasGroup>();
         }
-
-        UpdateMoneyDisplay();
     }
 
     void Update()
@@ -73,6 +71,13 @@ public class MoneyManager : MonoBehaviour
     void UpdateMoneyDisplay()
     {
         moneyText.text = Money.ToString() + "€";
+    }
+
+    public void HoverBeltButton()
+    {
+        TriggerMoneyChange(false);
+
+        moneyText.text = Money.ToString() + "€   -" + belt.TotalCost.ToString() + "€";
     }
 
     public void NoMoney()
