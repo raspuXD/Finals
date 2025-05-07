@@ -23,6 +23,11 @@ public class Slot : MonoBehaviour
 
     void Update()
     {
+        if(currentItem == null)
+        {
+            hasAItemInIt = false;
+        }
+
         if (!hasAItemInIt)
         {
             targetScale = isHighlighted ? originalScale * 1.15f : originalScale;
