@@ -48,14 +48,12 @@ public class MoneyManager : MonoBehaviour
             NoMoney();
         }
         TriggerMoneyChange(true);
-        ConveyorManager.Instance.UpdateUpgradeButtonState();
     }
 
     public void IncreaseMoney(int amount)   // Changed from float to int
     {
         Money += amount;
         TriggerMoneyChange(true);
-        ConveyorManager.Instance.UpdateUpgradeButtonState();
     }
 
     void TriggerMoneyChange(bool wannaUpdate)
@@ -77,7 +75,7 @@ public class MoneyManager : MonoBehaviour
     {
         TriggerMoneyChange(false);
 
-        moneyText.text = Money.ToString() + "€   -" + belt.TotalCost.ToString() + "€";
+        moneyText.text = Money.ToString() + "€   -" + belt.BeltCost.ToString() + "€";
     }
 
     public void NoMoney()
