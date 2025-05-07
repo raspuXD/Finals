@@ -27,7 +27,7 @@ public class OrderSlots : MonoBehaviour
             CheckMark();
         }
 
-        if(slot1Has &&  slot2Has && slot3Has && slot4Has && slot5Has)
+        if(slot1Has && slot2Has && slot3Has && slot4Has && slot5Has)
         {
             sendIt.SetActive(true);
         }
@@ -37,11 +37,20 @@ public class OrderSlots : MonoBehaviour
         }
     }
 
+    public void DestroyAllMUHAHAHA()
+    {
+        Destroy(slot1.currentItem.gameObject);
+        Destroy(slot2.currentItem.gameObject);
+        Destroy(slot3.currentItem.gameObject);
+        Destroy(slot4.currentItem.gameObject);
+        Destroy(slot5.currentItem.gameObject);
+    }
+
     void CheckMark()
     {
         if (slot1.theIngredient != null)
         {
-            //slot1Has = true;
+            slot1Has = true;
             if (slot1.theIngredient.ingredientType == theCustomerScript.selectedCustomer.theFoodCustomerWants.ingredient1)
             {
                 slot1Correct = true;
@@ -55,7 +64,7 @@ public class OrderSlots : MonoBehaviour
         }
         else
         {
-            //slot1Correct = false;
+            slot1Correct = false;
             checkMark1.SetActive(false);
             slot1Has = false;
         }

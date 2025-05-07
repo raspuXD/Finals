@@ -35,8 +35,8 @@ public class Customer : MonoBehaviour
     [Header("Accept")]
     [SerializeField] FullFade fullFade;
 
-    [Header("Timer")]
-    public TimerScript timerScript;  // Reference to the TimerScript
+   // [Header("Timer")]
+    //public TimerScript timerScript;  // Reference to the TimerScript
 
 
     private void Start()
@@ -47,9 +47,34 @@ public class Customer : MonoBehaviour
     public void Accepct()
     {
         fullFade.StartFullFade();
-        timerScript.StartTimer();
-        timerScript.ResetTimer();
+       // timerScript.StartTimer();
+       // timerScript.ResetTimer();
     }
+
+    public void FinishTheCustomer()
+    {
+        // Hide UI elements
+        buttonHolder.SetActive(false);
+        theSpeakText.text = "";
+        nameText.text = "";
+        theSpeakText.gameObject.SetActive(false);
+        speakCloud.gameObject.SetActive(false);
+        theCustomerUIImage.color = new Color(1, 1, 1, 0); // Make invisible
+
+        // Stop timer
+       // timerScript.StopTimer();
+       //timerScript.ResetTimer();
+//
+        // Reset customer data
+        MoneyManager money = FindObjectOfType<MoneyManager>();
+        money.IncreaseMoney(selectedCustomer.theFoodCustomerWants.maxCost);
+
+        selectedCustomer = null;
+
+        // Wait for new customer
+        StartCoroutine(WaitBeforeNewCustomer());
+    }
+
 
     public void Decline()
     {
@@ -59,8 +84,8 @@ public class Customer : MonoBehaviour
         StartCoroutine(FadeOutText(nameText));
         StartCoroutine(FadeOutText(theSpeakText));
         StartCoroutine(WaitBeforeNewCustomer());
-        timerScript.StopTimer();
-        timerScript.ResetTimer();
+        //timerScript.StopTimer();
+       // timerScript.ResetTimer();
     }
 
     public IEnumerator WaitBeforeNewCustomer()
