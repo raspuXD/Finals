@@ -50,11 +50,23 @@ public class MoneyManager : MonoBehaviour
         TriggerMoneyChange(true);
     }
 
-    public void IncreaseMoney(int amount)   // Changed from float to int
+    public void IncreaseMoney(int amount)
     {
         Money += amount;
-        TriggerMoneyChange(true);
+        TriggerMoneyChange(false);
+        moneyText.text = Money.ToString() + "€   + " + amount.ToString() + "€";
+        lastChangeTime = Time.time;
+        canvasGroup.alpha = 1f;
+
+        StartCoroutine(ShowNormalTextAfterDelay(1f));
     }
+
+    IEnumerator ShowNormalTextAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UpdateMoneyDisplay();
+    }
+
 
     void TriggerMoneyChange(bool wannaUpdate)
     {

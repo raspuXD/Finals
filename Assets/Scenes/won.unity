@@ -1109,10 +1109,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thank you for playing this game.
+  m_text: 'Thank you for playing
 
-    (The full game would have more orders
-    to complete.)'
+    this game.
+
+    (The full game would have
+
+    more
+    orders to complete.)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d3136a3462f515c46b8f34fc8808437f, type: 2}
   m_sharedMaterial: {fileID: -633065373592363691, guid: d3136a3462f515c46b8f34fc8808437f, type: 2}

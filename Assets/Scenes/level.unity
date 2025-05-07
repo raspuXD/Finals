@@ -5098,7 +5098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 60s
+  m_text: 60S
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0d6cb9aae63146a45a9e82e2008b76ca, type: 2}
   m_sharedMaterial: {fileID: -6762388587636630772, guid: 0d6cb9aae63146a45a9e82e2008b76ca, type: 2}
@@ -8369,7 +8369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Money: 50
   moneyText: {fileID: 1350133492}
-  fadeDelay: 3
+  fadeDelay: 1
   fadeDuration: 1
   belt: {fileID: 1960324784}
 --- !u!114 &1644976325
@@ -10190,7 +10190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyManager: {fileID: 1644976323}
   BeltLevel: 1
-  BeltCost: 100
+  BeltCost: 25
   MaxBeltLevel: 3
   UpgradeButton: {fileID: 187679321}
   productSpawnPoint: {fileID: 725983274}
