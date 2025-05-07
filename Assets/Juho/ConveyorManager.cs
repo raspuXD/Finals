@@ -62,7 +62,7 @@ public class ConveyorManager : MonoBehaviour
                 isCooldown = false;
         }
 
-        UpgradeButton.SetActive(moneyManager.Money >= GetTotalCost() && BeltLevel < MaxBeltLevel);
+        UpgradeButton.SetActive(moneyManager.Money >= BeltCost * BeltLevel && BeltLevel < MaxBeltLevel);
     }
 
     IEnumerator SpawnLoop()
@@ -146,14 +146,12 @@ public class ConveyorManager : MonoBehaviour
 
     public void UpgradeBelt()
     {
-        if (moneyManager.Money >= GetTotalCost() && BeltLevel < MaxBeltLevel)
+        if (moneyManager.Money >= BeltCost * BeltLevel && BeltLevel < MaxBeltLevel)
         {
-            moneyManager.DecreaseMoney(GetTotalCost());
+            moneyManager.DecreaseMoney(BeltCost * BeltLevel);
             BeltLevel++;
 
             // You can add logic here to handle any changes when the belt is upgraded
         }
     }
-
-    int GetTotalCost() => BeltCost * BeltLevel;
 }
