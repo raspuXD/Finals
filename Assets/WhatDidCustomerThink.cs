@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR;
 
 public class WhatDidCustomerThink : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class WhatDidCustomerThink : MonoBehaviour
     public TMP_Text theText;
     private bool hasFiredAtTen = false;
     public FadeIn theFadeIn;
+
+    public TMP_Text howManyRight;
+
     public void StartWriting()
     {
         int correctCount = 0;
@@ -49,6 +53,7 @@ public class WhatDidCustomerThink : MonoBehaviour
         if (correctCount == 5)
         {
             howManyFullyRight++;
+            howManyRight.text = howManyFullyRight + "/3";
 
             if (howManyFullyRight == 3)
             {
@@ -64,7 +69,7 @@ public class WhatDidCustomerThink : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (!hasFiredAtTen && timer >= 10f)
+            if (!hasFiredAtTen && timer >= 7f)
             {
                 hasFiredAtTen = true;
                 onTimerHitTen.Invoke();
