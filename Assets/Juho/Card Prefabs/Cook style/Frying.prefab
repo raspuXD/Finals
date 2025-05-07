@@ -413,7 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameForCookingStyle: Frying
   cookingType: 2
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: c39e7bb2c8e91f648b07122bee98254c, type: 3}
   theInfoHolder: {fileID: 7993572153483957594}
   theCardNameText: {fileID: 922987372783284448}
   theCost: 5

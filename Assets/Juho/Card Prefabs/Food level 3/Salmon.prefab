@@ -373,7 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameForIngredient: Salmon
   ingredientType: 10
-  image: {fileID: 21300000, guid: d5d5e8dc07b8d414281cc1743a92b383, type: 3}
+  image: {fileID: 21300000, guid: 0000959c5ec8cf1459da0f4162d7daf0, type: 3}
   theInfoHolder: {fileID: 7189349336374328729}
   theCardNameText: {fileID: 5851908550326049776}
   theCost: 4

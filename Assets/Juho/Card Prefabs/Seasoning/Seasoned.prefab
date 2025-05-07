@@ -515,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameForSeasoning: Seasoned
   seasoningType: 1
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 6c366db0bdd0fe04c9bf98ad1ac791d8, type: 3}
   theInfoHolder: {fileID: 2877489853406647818}
   theCardNameText: {fileID: 8973619572453667277}
   theCost: 3

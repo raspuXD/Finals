@@ -341,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameForIngredient: Water
   ingredientType: 4
-  image: {fileID: 21300000, guid: 42bd497104b802b4aac5551cf6c54c74, type: 3}
+  image: {fileID: 21300000, guid: 5da7ba1ed86cf66498d70f704dfa6aac, type: 3}
   theInfoHolder: {fileID: 1437482995474156358}
   theCardNameText: {fileID: 3104579534290928378}
   theCost: 6

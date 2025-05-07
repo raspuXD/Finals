@@ -413,7 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameForCookingStyle: Steaming
   cookingType: 1
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 36bcbf36ba72885499a4903b4ecfecf0, type: 3}
   theInfoHolder: {fileID: 7327141919499133304}
   theCardNameText: {fileID: 7516781147894456314}
   theCost: 3

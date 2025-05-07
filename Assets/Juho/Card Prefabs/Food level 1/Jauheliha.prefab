@@ -341,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameForIngredient: Groundbeef
   ingredientType: 2
-  image: {fileID: 21300000, guid: 42bd497104b802b4aac5551cf6c54c74, type: 3}
+  image: {fileID: 21300000, guid: 408fedfda952c214fad6712eed5e0b6d, type: 3}
   theInfoHolder: {fileID: 1437482995474156358}
   theCardNameText: {fileID: 3104579534290928378}
   theCost: 6

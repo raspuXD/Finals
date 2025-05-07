@@ -371,9 +371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8810ea5acd787564eb24680716ff6f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameForIngredient: Graded Cheese
+  nameForIngredient: Grated Cheese
   ingredientType: 0
-  image: {fileID: 21300000, guid: d5d5e8dc07b8d414281cc1743a92b383, type: 3}
+  image: {fileID: 21300000, guid: 4f7520daca19be84ba1e8d32a307e65f, type: 3}
   theInfoHolder: {fileID: 7189349336374328729}
   theCardNameText: {fileID: 5851908550326049776}
   theCost: 4
