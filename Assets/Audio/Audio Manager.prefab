@@ -258,13 +258,13 @@ MonoBehaviour:
     useRandomPitch: 0
     pitchRange: {x: 1, y: 1}
   - name: ManSpeak
-    clip: {fileID: 8300000, guid: 413b5517f79ef984da9256f91256e783, type: 3}
-    useRandomPitch: 0
-    pitchRange: {x: 1, y: 1}
+    clip: {fileID: 8300000, guid: 0676fdbdb703ec44c9f33d25a36c573a, type: 3}
+    useRandomPitch: 1
+    pitchRange: {x: 0.8, y: 1}
   - name: WomanSpeak
     clip: {fileID: 8300000, guid: 9cc92fc930fe1aa4280c78cf2f6156ca, type: 3}
-    useRandomPitch: 0
-    pitchRange: {x: 1, y: 1}
+    useRandomPitch: 1
+    pitchRange: {x: 0.8, y: 1}
   musicSource: {fileID: 4180836528979327869}
   sfxSource: {fileID: 1455452543863251528}
   whatMusicToPlayInStart: MainTheme
