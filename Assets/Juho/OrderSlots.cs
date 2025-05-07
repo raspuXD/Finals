@@ -39,7 +39,7 @@ public class OrderSlots : MonoBehaviour
 
     public void DestroyAllMUHAHAHA()
     {
-        if(slot1 != null)
+        if(slot1.currentItem != null)
         {
             Destroy(slot1.currentItem.gameObject);
             Destroy(slot2.currentItem.gameObject);
