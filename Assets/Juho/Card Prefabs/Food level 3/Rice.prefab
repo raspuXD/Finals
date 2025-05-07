@@ -376,7 +376,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: d514a987b94e13349bad57992600882f, type: 3}
   theInfoHolder: {fileID: 7189349336374328729}
   theCardNameText: {fileID: 5851908550326049776}
-  theCost: 4
+  theCost: 10
 --- !u!50 &3583680403722179006
 Rigidbody2D:
   serializedVersion: 4

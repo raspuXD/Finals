@@ -53,6 +53,8 @@ public class Customer : MonoBehaviour
     public void FinishTheCustomer()
     {
         // Hide UI elements
+
+
         buttonHolder.SetActive(false);
         theSpeakText.text = "";
         nameText.text = "";
