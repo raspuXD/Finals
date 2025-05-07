@@ -3,6 +3,8 @@ using UnityEngine;
 public class ConveyorItem : MonoBehaviour
 {
     public float moveSpeed = 2f;
+    public ConveyorManager theBelt;
+    public GameObject PrefabReference;
 
     void Update()
     {
@@ -17,7 +19,7 @@ public class ConveyorItem : MonoBehaviour
         if (other.CompareTag("ResetZone"))
         {
             // Add the item to the teleport list in ConveyorManager
-            ConveyorManager.Instance.AddItemToTeleportList(gameObject);
+            theBelt.AddItemToQueue(gameObject);
         }
     }
 }

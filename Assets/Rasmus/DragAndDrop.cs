@@ -4,8 +4,8 @@ public class DragAndDrop : MonoBehaviour
 {
     private Vector3 offset;
     private bool isDragging = false;
-    private float timer = 0f; // Timer for counting inactive time
-    private const float timeToDestroy = 45f; // Time before destruction
+    private float timer = 0f;
+    private const float timeToDestroy = 45f;
     Ingredient ingredient;
     CookingStyle cookingStyle;
     Seasoning seasoning;
@@ -17,6 +17,143 @@ public class DragAndDrop : MonoBehaviour
     public ItemType whatIsThis;
     bool isInMoveZone = false;
     MoneyManager mane;
+    SpriteRenderer spriteRenderer;
+
+    void Start()
+    {
+        if (whatIsThis == ItemType.Ingredient)
+        {
+            ingredient = GetComponent<Ingredient>();
+        }
+        else if (whatIsThis == ItemType.Seasoning)
+        {
+            seasoning = GetComponent<Seasoning>();
+        }
+        else
+        {
+            cookingStyle = GetComponent<CookingStyle>();
+        }
+        beltItem = GetComponent<ConveyorItem>();
+        mane = FindObjectOfType<MoneyManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
+    {
+        if (isDragging)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, transform.position.z);
+        }
+        else
+        {
+            timer += Time.deltaTime;
+            float timeLeft = timeToDestroy - timer;
+
+            if (timeLeft <= 5f && spriteRenderer != null)
+            {
+                float alpha = Mathf.Clamp01(timeLeft / 5f);
+                Color color = spriteRenderer.color;
+                spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
+            }
+
+            if (timer >= timeToDestroy)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void OnMouseDown()
+    {
+        if (!hasBeenBough)
+        {
+            hasBeenBough = true;
+            if (whatIsThis == ItemType.Ingredient)
+            {
+                mane.DecreaseMoney(ingredient.theCost);
+                PlayFoodSpecificSound(ingredient.ingredientType);
+            }
+            else if (whatIsThis == ItemType.Seasoning)
+            {
+                mane.DecreaseMoney(seasoning.theCost);
+                PlaySpiceSpecificSound(seasoning.seasoningType);
+            }
+            else
+            {
+                mane.DecreaseMoney(cookingStyle.theCost);
+                PlayEquipmentSpecificSound(cookingStyle.cookingType);
+            }
+        }
+
+        beltItem.enabled = false;
+        isDragging = true;
+        AudioManager.Instance.PlaySFX("CardPickup");
+
+        if (whatIsThis == ItemType.Ingredient)
+        {
+            ingredient.theInfoHolder.SetActive(false);
+            PlayFoodSpecificSound(ingredient.ingredientType);
+        }
+        else if (whatIsThis == ItemType.Seasoning)
+        {
+            seasoning.theInfoHolder.SetActive(false);
+            PlaySpiceSpecificSound(seasoning.seasoningType);
+        }
+        else
+        {
+            cookingStyle.theInfoHolder.SetActive(false);
+            PlayEquipmentSpecificSound(cookingStyle.cookingType);
+        }
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        offset = transform.position - mousePosition;
+
+        if (previousSlot != null)
+        {
+            previousSlot.ClearSlot();
+            previousSlot = null;
+        }
+
+        timer = 0f;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.white;
+        }
+    }
+
+    void OnMouseUp()
+    {
+        isDragging = false;
+        AudioManager.Instance.PlaySFX("CardPlace");
+        if (isInMoveZone)
+        {
+            beltItem.enabled = true;
+        }
+
+        if (currentSlot != null && currentSlot.whatToAcceptToSlot == whatIsThis)
+        {
+            if (previousSlot != null)
+            {
+                previousSlot.ClearSlot();
+            }
+
+            currentSlot.SnapToSlot(transform);
+            currentSlot.isHighlighted = false;
+            previousSlot = currentSlot;
+        }
+        else
+        {
+            if (highlightedSlot != null)
+            {
+                highlightedSlot.isHighlighted = false;
+            }
+
+            currentSlot = null;
+            highlightedSlot = null;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -55,114 +192,7 @@ public class DragAndDrop : MonoBehaviour
         }
     }
 
-    void OnMouseUp()
-    {
-        isDragging = false;
-        AudioManager.Instance.PlaySFX("CardPlace");
-        if (isInMoveZone)
-        {
-            beltItem.enabled = true;
-        }
-
-        if (currentSlot != null && currentSlot.whatToAcceptToSlot == whatIsThis)
-        {
-            if (previousSlot != null)
-            {
-                previousSlot.ClearSlot();
-            }
-
-            currentSlot.SnapToSlot(transform);
-            currentSlot.isHighlighted = false;
-            previousSlot = currentSlot;
-        }
-        else
-        {
-            if (highlightedSlot != null)
-            {
-                highlightedSlot.isHighlighted = false;
-            }
-
-            currentSlot = null;
-            highlightedSlot = null;
-        }
-    }
-
-    private void Start()
-    {
-        if (whatIsThis == ItemType.Ingredient)
-        {
-            ingredient = GetComponent<Ingredient>();
-        }
-        else if (whatIsThis == ItemType.Seasoning)
-        {
-            seasoning = GetComponent<Seasoning>();
-        }
-        else
-        {
-            cookingStyle = GetComponent<CookingStyle>();
-        }
-        beltItem = GetComponent<ConveyorItem>();
-        mane = FindObjectOfType<MoneyManager>();
-    }
-
-    void OnMouseDown()
-    {
-        if (!hasBeenBough)
-        {
-            hasBeenBough = true;
-            if (whatIsThis == ItemType.Ingredient)
-            {
-                mane.DecreaseMoney(ingredient.theCost);
-                PlayFoodSpecificSound(ingredient.ingredientType);
-            }
-            else if (whatIsThis == ItemType.Seasoning)
-            {
-                mane.DecreaseMoney(seasoning.theCost);
-                PlaySpiceSpecificSound(seasoning.seasoningType);
-            }
-            else
-            {
-                mane.DecreaseMoney(cookingStyle.theCost);
-                PlayEquipmentSpecificSound(cookingStyle.cookingType);
-            }
-        }
-
-        beltItem.enabled = false;
-        isDragging = true;
-
-        AudioManager.Instance.PlaySFX("CardPickup");
-
-        if (whatIsThis == ItemType.Ingredient)
-        {
-            ingredient.theInfoHolder.SetActive(false);
-            PlayFoodSpecificSound(ingredient.ingredientType);
-        }
-        else if (whatIsThis == ItemType.Seasoning)
-        {
-            seasoning.theInfoHolder.SetActive(false);
-            PlaySpiceSpecificSound(seasoning.seasoningType);
-        }
-        else
-        {
-            cookingStyle.theInfoHolder.SetActive(false);
-            PlayEquipmentSpecificSound(cookingStyle.cookingType);
-        }
-
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        offset = transform.position - mousePosition;
-
-        if (previousSlot != null)
-        {
-            previousSlot.ClearSlot();
-            previousSlot = null;
-        }
-
-        // Reset the timer when dragging starts
-        timer = 0f;
-    }
-
-
-    private void OnMouseOver()
+    void OnMouseOver()
     {
         if (whatIsThis == ItemType.Ingredient)
         {
@@ -208,7 +238,7 @@ public class DragAndDrop : MonoBehaviour
         }
     }
 
-    private void OnMouseExit()
+    void OnMouseExit()
     {
         if (whatIsThis == ItemType.Ingredient)
         {
@@ -221,26 +251,6 @@ public class DragAndDrop : MonoBehaviour
         else
         {
             cookingStyle.theInfoHolder.SetActive(false);
-        }
-    }
-
-    void Update()
-    {
-        if (isDragging)
-        {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, transform.position.z);
-        }
-        else
-        {
-            // Increment the timer when not dragging
-            timer += Time.deltaTime;
-
-            if (timer >= timeToDestroy)
-            {
-                // Destroy the object after 45 seconds of inactivity
-                Destroy(gameObject);
-            }
         }
     }
 
@@ -286,6 +296,7 @@ public class DragAndDrop : MonoBehaviour
                 break;
         }
     }
+
     private void PlayEquipmentSpecificSound(CookingStyle.State cookingType)
     {
         switch (cookingType)
@@ -301,6 +312,7 @@ public class DragAndDrop : MonoBehaviour
                 break;
         }
     }
+
     private void PlaySpiceSpecificSound(Seasoning.State seasoningType)
     {
         switch (seasoningType)
@@ -309,8 +321,6 @@ public class DragAndDrop : MonoBehaviour
                 AudioManager.Instance.PlaySFX("CardPickup");
                 break;
             case Seasoning.State.Seasoned:
-                AudioManager.Instance.PlaySFX("Spice");
-                break;
             case Seasoning.State.Spicy:
                 AudioManager.Instance.PlaySFX("Spice");
                 break;

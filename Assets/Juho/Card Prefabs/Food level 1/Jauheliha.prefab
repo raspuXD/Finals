@@ -385,6 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  theBelt: {fileID: 0}
 --- !u!1 &7752430046028764091
 GameObject:
   m_ObjectHideFlags: 0

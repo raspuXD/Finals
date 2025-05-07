@@ -31,9 +31,8 @@ public class ConveyorManager : MonoBehaviour
     public List<GameObject> equipmentLevel3Prefabs;
 
     private Queue<GameObject> itemQueue = new Queue<GameObject>();
-    private List<GameObject> teleportedItems = new List<GameObject>();
+    private Queue<GameObject> currentPrefabQueue = new Queue<GameObject>();
 
-    private int lastSpawnedIndex = -1;
     private bool isCooldown = false;
     private float cooldownTimer = 0f;
 
@@ -45,6 +44,13 @@ public class ConveyorManager : MonoBehaviour
 
     void Start()
     {
+        List<GameObject> initialList = GetCurrentPrefabListLegacy();
+        foreach (var prefab in initialList)
+        {
+            if (!currentPrefabQueue.Contains(prefab))
+                currentPrefabQueue.Enqueue(prefab);
+        }
+
         StartCoroutine(SpawnLoop());
     }
 
@@ -54,9 +60,7 @@ public class ConveyorManager : MonoBehaviour
         {
             cooldownTimer -= Time.deltaTime;
             if (cooldownTimer <= 0f)
-            {
                 isCooldown = false;
-            }
         }
 
         UpgradeButton.SetActive(moneyManager.Money >= GetTotalCost() && BeltLevel < MaxBeltLevel);
@@ -68,7 +72,7 @@ public class ConveyorManager : MonoBehaviour
         {
             if (!isCooldown)
             {
-                ProcessNextItem();
+                HandleNextItem();
                 yield return new WaitForSeconds(Random.Range(MinSpawnInterval, MaxSpawnInterval));
             }
             else
@@ -78,7 +82,7 @@ public class ConveyorManager : MonoBehaviour
         }
     }
 
-    void ProcessNextItem()
+    void HandleNextItem()
     {
         if (itemQueue.Count > 0)
         {
@@ -86,25 +90,18 @@ public class ConveyorManager : MonoBehaviour
 
             if (item != null)
             {
-                if (teleportedItems.Contains(item))
-                {
-                    TeleportItem(item);
-                }
-                else
-                {
-                    item.transform.position = spawnPoint.position;
+                item.transform.position = resetPoint.position;
 
-                    ConveyorItem conveyorItem = item.GetComponent<ConveyorItem>();
-                    if (conveyorItem != null)
-                    {
-                        conveyorItem.enabled = false;
-                        StartCoroutine(EnableAfterDelay(conveyorItem, 0.75f));
-                    }
-
-                    teleportedItems.Add(item);
-                    itemQueue.Enqueue(item);
-                    StartCooldown();
+                ConveyorItem conveyorItem = item.GetComponent<ConveyorItem>();
+                if (conveyorItem != null)
+                {
+                    conveyorItem.enabled = false;
+                    StartCoroutine(EnableAfterDelay(conveyorItem, 0.75f));
                 }
+
+                TryAddToQueue(item);
+
+                StartCooldown();
             }
         }
         else
@@ -115,35 +112,17 @@ public class ConveyorManager : MonoBehaviour
 
     void SpawnNewItem()
     {
-        List<GameObject> prefabList = GetCurrentPrefabList();
-        if (prefabList == null || prefabList.Count == 0) return;
+        if (currentPrefabQueue.Count == 0) return;
 
-        int index;
-        do
-        {
-            index = Random.Range(0, prefabList.Count);
-        } while (index == lastSpawnedIndex && prefabList.Count > 1);
+        GameObject prefab = currentPrefabQueue.Dequeue();
+        GameObject newItem = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
 
-        GameObject newItem = Instantiate(prefabList[index], spawnPoint.position, Quaternion.identity);
-        lastSpawnedIndex = index;
-
-        itemQueue.Enqueue(newItem);
-        teleportedItems.Add(newItem);
-        StartCooldown();
-    }
-
-    void TeleportItem(GameObject item)
-    {
-        item.transform.position = resetPoint.position;
-
-        ConveyorItem conveyorItem = item.GetComponent<ConveyorItem>();
+        ConveyorItem conveyorItem = newItem.GetComponent<ConveyorItem>();
         if (conveyorItem != null)
         {
-            conveyorItem.enabled = false;
-            StartCoroutine(EnableAfterDelay(conveyorItem, 0.75f));
+            conveyorItem.theBelt = this;
         }
 
-        itemQueue.Enqueue(item);
         StartCooldown();
     }
 
@@ -159,7 +138,16 @@ public class ConveyorManager : MonoBehaviour
         cooldownTimer = actionCooldown;
     }
 
-    List<GameObject> GetCurrentPrefabList()
+    void TryAddToQueue(GameObject item)
+    {
+        GameObject prefab = item.GetComponent<ConveyorItem>()?.PrefabReference; // You should store the original prefab in the item when instantiating
+        if (prefab != null && !currentPrefabQueue.Contains(prefab))
+        {
+            currentPrefabQueue.Enqueue(prefab);
+        }
+    }
+
+    List<GameObject> GetCurrentPrefabListLegacy()
     {
         if (isEquipmentConveyor)
         {
@@ -183,29 +171,29 @@ public class ConveyorManager : MonoBehaviour
         }
     }
 
-    public void AddItemToTeleportList(GameObject item)
-    {
-        if (!itemQueue.Contains(item))
-        {
-            itemQueue.Enqueue(item);
-        }
-
-        if (!teleportedItems.Contains(item))
-        {
-            teleportedItems.Add(item); // optional tracking
-        }
-    }
-
-
     public void UpgradeBelt()
     {
         if (moneyManager.Money >= GetTotalCost() && BeltLevel < MaxBeltLevel)
         {
             moneyManager.DecreaseMoney(GetTotalCost());
             BeltLevel++;
-            Debug.Log($"{(isEquipmentConveyor ? "Equipment" : "Product")} Belt upgraded to level {BeltLevel}.");
+
+            List<GameObject> newLevelPrefabs = GetCurrentPrefabListLegacy();
+            foreach (var prefab in newLevelPrefabs)
+            {
+                if (!currentPrefabQueue.Contains(prefab))
+                    currentPrefabQueue.Enqueue(prefab);
+            }
         }
     }
 
     int GetTotalCost() => BeltCost * BeltLevel;
+
+    public void AddItemToQueue(GameObject item)
+    {
+        if (!itemQueue.Contains(item))
+        {
+            itemQueue.Enqueue(item);
+        }
+    }
 }
