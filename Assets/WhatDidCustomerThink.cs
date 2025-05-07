@@ -14,8 +14,11 @@ public class WhatDidCustomerThink : MonoBehaviour
     public bool isRunning = false;
     public UnityEvent onTimerHitTen;
 
+    public int howManyFullyRight = 0;
+
     public TMP_Text theText;
     private bool hasFiredAtTen = false;
+    public FadeIn theFadeIn;
     public void StartWriting()
     {
         int correctCount = 0;
@@ -42,7 +45,18 @@ public class WhatDidCustomerThink : MonoBehaviour
 
         string finalText = chosenLine + " I wanted my " + customer.selectedCustomer.theFoodCustomerWants.foodName + " to be good!";
         theText.text = finalText;
+
+        if (correctCount == 5)
+        {
+            howManyFullyRight++;
+
+            if (howManyFullyRight == 3)
+            {
+                theFadeIn.StartFadeIn();
+            }
+        }
     }
+
 
     void Update()
     {

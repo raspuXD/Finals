@@ -5,22 +5,24 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;   // Assign in Inspector
-    public float maxTime = 30f;         // Set your max time
-    public bool requiredCondition = false;  // Change this from another script when needed
-    public bool showTimer = true;       // Controls visibility of timer text
+    public TextMeshProUGUI timerText;
+    public float maxTime = 30f;
+    public bool requiredCondition = false;
+    public bool showTimer = true;
 
     private float currentTime = 0f;
     private bool hasLost = false;
+    public bool canBeDone = false;
+
+    private bool timerRunning = false;
+    public FadeIn theLose;
 
     void Update()
     {
-        // Only run timer if not already failed
-        if (!hasLost)
+        if (!hasLost && timerRunning)
         {
             currentTime += Time.deltaTime;
 
-            // Update text if allowed
             if (timerText != null)
             {
                 timerText.gameObject.SetActive(showTimer);
@@ -28,13 +30,37 @@ public class Timer : MonoBehaviour
                     timerText.text = Mathf.FloorToInt(currentTime).ToString();
             }
 
-            // Check if time is up
             if (currentTime >= maxTime && !requiredCondition)
             {
                 hasLost = true;
-                Debug.Log("You lose!");
-                // Add your game over logic here
+                timerRunning = false;
+                theLose.StartFadeIn();
             }
         }
     }
+
+    public void StopTimer()
+    {
+        timerRunning = false;
+    }
+
+    public void StartTimer()
+    {
+        currentTime = 0f;
+        hasLost = false;
+        timerRunning = true;
+    }
+
+    public void StopAndResetTimer()
+    {
+        currentTime = 0f;
+        hasLost = false;
+        timerRunning = false;
+
+        if (timerText != null)
+        {
+            timerText.text = "0";
+        }
+    }
+
 }

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lostallmoney.unity
     guid: 17102817fecedb54080d08d5e4514f5d
+  - enabled: 1
+    path: Assets/Scenes/won.unity
+    guid: a4a161dce8b13f64582ea0ec64dd464c
   m_configObjects: {}
