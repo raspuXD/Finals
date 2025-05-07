@@ -53,7 +53,7 @@ public class WhatDidCustomerThink : MonoBehaviour
         if (correctCount == 5)
         {
             howManyFullyRight++;
-            howManyRight.text = howManyFullyRight + "/3";
+            howManyRight.text = howManyFullyRight + "/3 done perfectly";
 
             if (howManyFullyRight == 3)
             {
