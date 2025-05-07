@@ -69,7 +69,7 @@ public class WhatDidCustomerThink : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            if (!hasFiredAtTen && timer >= 7f)
+            if (!hasFiredAtTen && timer >= 5f)
             {
                 hasFiredAtTen = true;
                 onTimerHitTen.Invoke();
