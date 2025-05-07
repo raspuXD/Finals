@@ -2471,7 +2471,7 @@ MonoBehaviour:
   howLongToCanClose: 2
   showInStart: 1
   wantToWriteInStart: 
-  howLongNeedToWaitIfFade: 0
+  howLongNeedToWaitIfFade: 1
   fromATrigger: 0
   wantToWriteInTrigger: 
   usesMultipleDias: 1
