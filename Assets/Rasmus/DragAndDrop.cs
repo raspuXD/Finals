@@ -4,8 +4,6 @@ public class DragAndDrop : MonoBehaviour
 {
     private Vector3 offset;
     private bool isDragging = false;
-    private float timer = 0f;
-    private const float timeToDestroy = 45f;
     Ingredient ingredient;
     CookingStyle cookingStyle;
     Seasoning seasoning;
@@ -44,23 +42,6 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(mousePosition.x + offset.x, mousePosition.y + offset.y, transform.position.z);
-        }
-        else
-        {
-            timer += Time.deltaTime;
-            float timeLeft = timeToDestroy - timer;
-
-            if (timeLeft <= 5f && spriteRenderer != null)
-            {
-                float alpha = Mathf.Clamp01(timeLeft / 5f);
-                Color color = spriteRenderer.color;
-                spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
-            }
-
-            if (timer >= timeToDestroy)
-            {
-                Destroy(gameObject);
-            }
         }
     }
 
@@ -114,8 +95,6 @@ public class DragAndDrop : MonoBehaviour
             previousSlot.ClearSlot();
             previousSlot = null;
         }
-
-        timer = 0f;
 
         if (spriteRenderer != null)
         {
