@@ -143,6 +143,10 @@ public class ConveyorManager : MonoBehaviour
             default: return equipmentLevel1Prefabs;
         }
     }
+    public void ChekcIfActive()
+    {
+        UpgradeButton.SetActive(moneyManager.Money >= BeltCost * BeltLevel && BeltLevel < MaxBeltLevel);
+    }
 
     public void UpgradeBelt()
     {

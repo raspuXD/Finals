@@ -58,6 +58,8 @@ public class MoneyManager : MonoBehaviour
         lastChangeTime = Time.time;
         canvasGroup.alpha = 1f;
 
+        belt.ChekcIfActive();
+
         StartCoroutine(ShowNormalTextAfterDelay(2f));
     }
 
