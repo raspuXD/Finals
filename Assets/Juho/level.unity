@@ -727,7 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5901,7 +5901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1193983214
 Transform:
   m_ObjectHideFlags: 0
@@ -7740,7 +7740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1588233711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8528,10 +8528,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   womanCustomers:
-  - theLineToBeSaid: "Haluan my\xF6s ruokaa"
+  - theLineToBeSaid: Hello, I want a
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: Hi there, I would like a
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: Could I get a
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: "I\u2019m in the mood for a"
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: Hey, can you give me a
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: "I\u2019ve been craving a"
     theFoodCustomerWants: {fileID: 0}
   maleCustomers:
-  - theLineToBeSaid: Haluan ruokaa
+  - theLineToBeSaid: Hey, I want a
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: "I\u2019ll take a"
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: "I\u2019m looking for a"
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: Can I get a
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: "I\u2019d like a"
+    theFoodCustomerWants: {fileID: 0}
+  - theLineToBeSaid: "I\u2019ll take a"
     theFoodCustomerWants: {fileID: 0}
   womanNames:
   - Emma
@@ -8565,15 +8585,38 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 000c0ec326990264fb6f0af5fbee06a4, type: 3}
   - {fileID: 21300000, guid: cc9bc9c9171baca478d91e98b0c69f08, type: 3}
   foodsToBeWantedBeltLeve1:
+  - {fileID: 11400000, guid: dfe492e93de4f644eb61199f20ed4a73, type: 2}
+  - {fileID: 11400000, guid: 1caf98973e540a840bfaf169fda09b41, type: 2}
+  - {fileID: 11400000, guid: 2f0f214e2869ac14f869179395e538f8, type: 2}
   - {fileID: 11400000, guid: bed063be2f2d40a488ac229ba670cd7a, type: 2}
-  - {fileID: 11400000, guid: 9e23ac37630e46c4d8cd21d4446d6292, type: 2}
-  foodsToBeWantedBeltLeve2: []
-  foodsToBeWantedBeltLeve3: []
+  foodsToBeWantedBeltLeve2:
+  - {fileID: 11400000, guid: dfe492e93de4f644eb61199f20ed4a73, type: 2}
+  - {fileID: 11400000, guid: 1caf98973e540a840bfaf169fda09b41, type: 2}
+  - {fileID: 11400000, guid: 2f0f214e2869ac14f869179395e538f8, type: 2}
+  - {fileID: 11400000, guid: bed063be2f2d40a488ac229ba670cd7a, type: 2}
+  - {fileID: 11400000, guid: 8f0ec1eef80bc4840a7f715da7ecece9, type: 2}
+  - {fileID: 11400000, guid: 0ed9ac0d0fe19d846ab76b1f61a8c81c, type: 2}
+  - {fileID: 11400000, guid: 96e40bdf3cfd33a4ba7e1c90eb543fa0, type: 2}
+  - {fileID: 11400000, guid: 778abba40deb7af41885085be71b00aa, type: 2}
+  foodsToBeWantedBeltLeve3:
+  - {fileID: 11400000, guid: dfe492e93de4f644eb61199f20ed4a73, type: 2}
+  - {fileID: 11400000, guid: 1caf98973e540a840bfaf169fda09b41, type: 2}
+  - {fileID: 11400000, guid: 2f0f214e2869ac14f869179395e538f8, type: 2}
+  - {fileID: 11400000, guid: bed063be2f2d40a488ac229ba670cd7a, type: 2}
+  - {fileID: 11400000, guid: 8f0ec1eef80bc4840a7f715da7ecece9, type: 2}
+  - {fileID: 11400000, guid: 0ed9ac0d0fe19d846ab76b1f61a8c81c, type: 2}
+  - {fileID: 11400000, guid: 96e40bdf3cfd33a4ba7e1c90eb543fa0, type: 2}
+  - {fileID: 11400000, guid: 778abba40deb7af41885085be71b00aa, type: 2}
+  - {fileID: 11400000, guid: b1587ef75a0723d4580c89be07d4ce2f, type: 2}
+  - {fileID: 11400000, guid: f31722f00a1913a49a3d720006cf5ad6, type: 2}
+  - {fileID: 11400000, guid: 93efa21ceb9b4ca408c746f0b6048ee7, type: 2}
+  - {fileID: 11400000, guid: 0236d8ac02a62634882ddc8d12e6e386, type: 2}
   whatLevelBelt: 1
   selectedCustomer:
     theLineToBeSaid: 
     theFoodCustomerWants: {fileID: 0}
   theCustomerUIImage: {fileID: 1607489412}
+  anotherOne: {fileID: 254545595}
   howFastFadesInAndOut: 1
   speakCloud: {fileID: 345752096}
   theSpeakText: {fileID: 2125064305}
@@ -9923,30 +9966,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyManager: {fileID: 1644976323}
+  isEquipmentConveyor: 0
   BeltLevel: 1
   BeltCost: 0
   TotalCost: 0
   UpgradeButton: {fileID: 2724530455721380650}
-  level1Prefabs:
-  - {fileID: 7090847125861746693, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
-  - {fileID: 2897952138825287728, guid: 6be0ebd1371f90e4a8377ffc92bc34e3, type: 3}
-  - {fileID: 2897952138825287728, guid: 4ed7f8edbb15eee489affc43067a6227, type: 3}
-  - {fileID: 2897952138825287728, guid: 73112d70a8cf35341b99c514ec210860, type: 3}
-  - {fileID: 2897952138825287728, guid: 92036dec29e6cac488a343a78227a45c, type: 3}
-  - {fileID: 2897952138825287728, guid: 29bcf788083a819469241d4790fc23df, type: 3}
-  level2Prefabs:
-  - {fileID: 7090847125861746693, guid: 7cb2398399a64874dba59117c3014c41, type: 3}
-  - {fileID: 7090847125861746693, guid: 3f6fea9da8f205540a465f0ff48b5564, type: 3}
-  - {fileID: 7090847125861746693, guid: c07d0aa293a301b4eba5771c2bc895b0, type: 3}
-  level3Prefabs:
-  - {fileID: 7090847125861746693, guid: c6b1b9d66b0ca6c41a74b5c99813b885, type: 3}
-  - {fileID: 7090847125861746693, guid: b03768ab9030e754a9db40dff765abc1, type: 3}
-  - {fileID: 7090847125861746693, guid: 95366e2d05111c14c97cd797953ebfef, type: 3}
   spawnPoint: {fileID: 1960324783}
   resetPoint: {fileID: 1960324783}
   MinSpawnInterval: 6
   MaxSpawnInterval: 9
   actionCooldown: 3
+  productLevel1Prefabs:
+  - {fileID: 7090847125861746693, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+  - {fileID: 2897952138825287728, guid: 6be0ebd1371f90e4a8377ffc92bc34e3, type: 3}
+  - {fileID: 2897952138825287728, guid: 4ed7f8edbb15eee489affc43067a6227, type: 3}
+  - {fileID: 2897952138825287728, guid: 73112d70a8cf35341b99c514ec210860, type: 3}
+  - {fileID: 2897952138825287728, guid: 92036dec29e6cac488a343a78227a45c, type: 3}
+  productLevel2Prefabs:
+  - {fileID: 7090847125861746693, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+  - {fileID: 2897952138825287728, guid: 6be0ebd1371f90e4a8377ffc92bc34e3, type: 3}
+  - {fileID: 2897952138825287728, guid: 4ed7f8edbb15eee489affc43067a6227, type: 3}
+  - {fileID: 2897952138825287728, guid: 73112d70a8cf35341b99c514ec210860, type: 3}
+  - {fileID: 2897952138825287728, guid: 92036dec29e6cac488a343a78227a45c, type: 3}
+  - {fileID: 7090847125861746693, guid: 3f6fea9da8f205540a465f0ff48b5564, type: 3}
+  - {fileID: 7090847125861746693, guid: 7cb2398399a64874dba59117c3014c41, type: 3}
+  - {fileID: 7090847125861746693, guid: c07d0aa293a301b4eba5771c2bc895b0, type: 3}
+  productLevel3Prefabs:
+  - {fileID: 7090847125861746693, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
+  - {fileID: 2897952138825287728, guid: 6be0ebd1371f90e4a8377ffc92bc34e3, type: 3}
+  - {fileID: 2897952138825287728, guid: 4ed7f8edbb15eee489affc43067a6227, type: 3}
+  - {fileID: 2897952138825287728, guid: 73112d70a8cf35341b99c514ec210860, type: 3}
+  - {fileID: 2897952138825287728, guid: 92036dec29e6cac488a343a78227a45c, type: 3}
+  - {fileID: 7090847125861746693, guid: 3f6fea9da8f205540a465f0ff48b5564, type: 3}
+  - {fileID: 7090847125861746693, guid: 7cb2398399a64874dba59117c3014c41, type: 3}
+  - {fileID: 7090847125861746693, guid: c07d0aa293a301b4eba5771c2bc895b0, type: 3}
+  - {fileID: 7090847125861746693, guid: 95366e2d05111c14c97cd797953ebfef, type: 3}
+  - {fileID: 7090847125861746693, guid: b03768ab9030e754a9db40dff765abc1, type: 3}
+  - {fileID: 7090847125861746693, guid: c6b1b9d66b0ca6c41a74b5c99813b885, type: 3}
+  equipmentLevel1Prefabs:
+  - {fileID: 4479137713931271965, guid: 496a27e8cd0810849b0a9fd183622148, type: 3}
+  - {fileID: 7042081323320210372, guid: bfc4284cd5c5f8b46bd2b51c96f1a563, type: 3}
+  equipmentLevel2Prefabs:
+  - {fileID: 4479137713931271965, guid: 496a27e8cd0810849b0a9fd183622148, type: 3}
+  - {fileID: 7286477274924505786, guid: 3db9d0c3b76822f49b5c6b0ca1fb6242, type: 3}
+  - {fileID: 7042081323320210372, guid: bfc4284cd5c5f8b46bd2b51c96f1a563, type: 3}
+  - {fileID: 5632449525772372055, guid: b9c7c0ae374a69b4280979b4f4db4dc9, type: 3}
+  equipmentLevel3Prefabs:
+  - {fileID: 4479137713931271965, guid: 496a27e8cd0810849b0a9fd183622148, type: 3}
+  - {fileID: 7286477274924505786, guid: 3db9d0c3b76822f49b5c6b0ca1fb6242, type: 3}
+  - {fileID: 1546921204426384163, guid: 5db1c8eee5bc43643a53e793eee115eb, type: 3}
+  - {fileID: 4563175085199329871, guid: 3d5a50ae5e077634681d8fe144f80c34, type: 3}
+  - {fileID: 7042081323320210372, guid: bfc4284cd5c5f8b46bd2b51c96f1a563, type: 3}
+  - {fileID: 5632449525772372055, guid: b9c7c0ae374a69b4280979b4f4db4dc9, type: 3}
   canSpawn: 1
   teleportedItems: []
 --- !u!50 &1960324785

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef932530cdda3843b7dc5f503d55b3e, type: 3}
+  m_Name: Blazefin Crunchers
+  m_EditorClassIdentifier: 
+  foodName: Blazefin Crunchers
+  ingredient1: 10
+  ingredient2: 11
+  ingredient3: 6
+  cookingStyle: 2
+  seasoning: 2
+  minCost: 75
+  maxCost: 100

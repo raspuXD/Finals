@@ -245,16 +245,16 @@ public class DragAndDrop : MonoBehaviour
     {
         switch (ingredientType)
         {
-            case Ingredient.State.GradedCheese:
+            case Ingredient.State.GratedCheese:
                 AudioManager.Instance.PlaySFX("GratedCheese");
                 break;
             case Ingredient.State.Potato:
                 AudioManager.Instance.PlaySFX("Vegetable");
                 break;
-            case Ingredient.State.Jauheliha:
+            case Ingredient.State.GroundBeef:
                 AudioManager.Instance.PlaySFX("Meat");
                 break;
-            case Ingredient.State.Spagetti:
+            case Ingredient.State.Spaghetti:
                 AudioManager.Instance.PlaySFX("Spaghetti");
                 break;
             case Ingredient.State.Water:
@@ -266,7 +266,7 @@ public class DragAndDrop : MonoBehaviour
             case Ingredient.State.CheeseSlice:
                 AudioManager.Instance.PlaySFX("Cheese");
                 break;
-            case Ingredient.State.Puns:
+            case Ingredient.State.Buns:
                 AudioManager.Instance.PlaySFX("CardPickup");
                 break;
             case Ingredient.State.Steak:

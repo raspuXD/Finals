@@ -15,19 +15,20 @@ public class Ingredient : MonoBehaviour
 
     public enum State
     {
-        GradedCheese,
+        GratedCheese,
         Potato,
-        Jauheliha,
-        Spagetti,
+        GroundBeef,
+        Spaghetti,
         Water,
         Tomato,
         CheeseSlice,
-        Puns,
+        Buns,
         Steak,
         Lemon,
         Salmon,
         Rice
     }
+
 
     public void Start()
     {

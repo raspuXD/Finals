@@ -24,7 +24,7 @@ public class Customer : MonoBehaviour
 
 
     [Header("Visual")]
-    public Image theCustomerUIImage;
+    public Image theCustomerUIImage, anotherOne;
     public float howFastFadesInAndOut = .5f;
     public Image speakCloud;
     public TMP_Text theSpeakText, nameText;  // Added nameText TMP_Text
@@ -101,12 +101,14 @@ public class Customer : MonoBehaviour
         {
             selectedCustomer = womanCustomers[Random.Range(0, womanCustomers.Length)];
             theCustomerUIImage.sprite = womanSprites[Random.Range(0, womanSprites.Length)];
+            anotherOne.sprite = womanSprites[Random.Range(0, womanSprites.Length)];
             nameText.text = womanNames[Random.Range(0, womanNames.Length)];  // Set the name for the woman
         }
         else
         {
             selectedCustomer = maleCustomers[Random.Range(0, maleCustomers.Length)];
             theCustomerUIImage.sprite = manSprites[Random.Range(0, manSprites.Length)];
+            anotherOne.sprite = manSprites[Random.Range(0, manSprites.Length)];
             nameText.text = manNames[Random.Range(0, manNames.Length)];  // Set the name for the man
         }
 
@@ -178,7 +180,7 @@ public class Customer : MonoBehaviour
 
     IEnumerator TypeSentence(CustomerData selectedCustomer)
     {
-        string fullSentence = selectedCustomer.theLineToBeSaid + " and I want a " + selectedCustomer.theFoodCustomerWants.foodName + "!";
+        string fullSentence = selectedCustomer.theLineToBeSaid + " " + selectedCustomer.theFoodCustomerWants.foodName;
 
         foreach (char letter in fullSentence)
         {
