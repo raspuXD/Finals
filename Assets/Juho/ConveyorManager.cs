@@ -41,9 +41,16 @@ public class ConveyorManager : MonoBehaviour
             Instance = this;
     }
 
-    void Start()
+    void OnEnable()
     {
+        // Restart the coroutine when the object is enabled
         StartCoroutine(SpawnLoop());
+    }
+
+    void OnDisable()
+    {
+        // Optionally stop the coroutine if the object is disabled
+        StopAllCoroutines();
     }
 
     void Update()

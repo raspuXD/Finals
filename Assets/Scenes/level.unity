@@ -2464,9 +2464,9 @@ MonoBehaviour:
   theInfoText: {fileID: 1787688799}
   howToGetAwayText: {fileID: 1552897678}
   theTutorialButtonAgain: {fileID: 2028347468}
-  closeKey: 27
-  willSeeOnlyOnce: 0
-  thePlayerPrefName: asdasdasdas
+  closeKey: 101
+  willSeeOnlyOnce: 1
+  thePlayerPrefName: sdasdasdasd
   howFastScales: 0.33
   howLongToCanClose: 2
   showInStart: 1
@@ -2480,8 +2480,8 @@ MonoBehaviour:
     the card with the details so he knows what to cook.
   - Also, make sure you never go bankrupt! Lol!
   - Yeah, go already! Customers aren't very patient!
-  doYouWantToSoDifferentCountinueText: 0
-  whatToSayAwayText: 
+  doYouWantToSoDifferentCountinueText: 1
+  whatToSayAwayText: Press E To countinue
 --- !u!1 &395848563
 GameObject:
   m_ObjectHideFlags: 0
@@ -8287,7 +8287,7 @@ MonoBehaviour:
   theInfoText: {fileID: 1787688799}
   howToGetAwayText: {fileID: 1552897678}
   theTutorialButtonAgain: {fileID: 2028347468}
-  closeKey: 27
+  closeKey: 101
   willSeeOnlyOnce: 0
   thePlayerPrefName: cookPhases
   howFastScales: 0.33
@@ -8335,7 +8335,6 @@ GameObject:
   - component: {fileID: 1644976327}
   - component: {fileID: 1644976326}
   - component: {fileID: 1644976325}
-  - component: {fileID: 1644976324}
   - component: {fileID: 1644976323}
   m_Layer: 5
   m_Name: Money hud
@@ -8361,23 +8360,6 @@ MonoBehaviour:
   fadeDelay: 3
   fadeDuration: 1
   belt: {fileID: 1960324784}
---- !u!114 &1644976324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1644976322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1644976325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8418,7 +8400,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
