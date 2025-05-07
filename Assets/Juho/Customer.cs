@@ -35,6 +35,10 @@ public class Customer : MonoBehaviour
     [Header("Accept")]
     [SerializeField] FullFade fullFade;
 
+    [Header("Timer")]
+    public TimerScript timerScript;  // Reference to the TimerScript
+
+
     private void Start()
     {
         StartCoroutine(WaitBeforeNewCustomer());
@@ -43,7 +47,9 @@ public class Customer : MonoBehaviour
     public void Accepct()
     {
         fullFade.StartFullFade();
-     }
+        timerScript.StartTimer();
+        timerScript.ResetTimer();
+    }
 
     public void Decline()
     {
@@ -53,6 +59,8 @@ public class Customer : MonoBehaviour
         StartCoroutine(FadeOutText(nameText));
         StartCoroutine(FadeOutText(theSpeakText));
         StartCoroutine(WaitBeforeNewCustomer());
+        timerScript.StopTimer();
+        timerScript.ResetTimer();
     }
 
     public IEnumerator WaitBeforeNewCustomer()
