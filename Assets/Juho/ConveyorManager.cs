@@ -32,6 +32,9 @@ public class ConveyorManager : MonoBehaviour
     private bool isCooldown = false;
     private float cooldownTimer = 0f;
 
+    private GameObject lastSpawnedProduct = null;
+    private GameObject lastSpawnedEquipment = null;
+
     void Awake()
     {
         if (Instance == null)
@@ -77,19 +80,33 @@ public class ConveyorManager : MonoBehaviour
         List<GameObject> productPrefabs = GetProductPrefabList();
         if (productPrefabs.Count > 0)
         {
-            GameObject productPrefab = productPrefabs[Random.Range(0, productPrefabs.Count)];
+            GameObject productPrefab = GetRandomItem(productPrefabs, lastSpawnedProduct);
             Instantiate(productPrefab, productSpawnPoint.position, Quaternion.identity);
+            lastSpawnedProduct = productPrefab;
         }
 
         // Spawn equipment
         List<GameObject> equipmentPrefabs = GetEquipmentPrefabList();
         if (equipmentPrefabs.Count > 0)
         {
-            GameObject equipmentPrefab = equipmentPrefabs[Random.Range(0, equipmentPrefabs.Count)];
+            GameObject equipmentPrefab = GetRandomItem(equipmentPrefabs, lastSpawnedEquipment);
             Instantiate(equipmentPrefab, equipmentSpawnPoint.position, Quaternion.identity);
+            lastSpawnedEquipment = equipmentPrefab;
         }
 
         StartCooldown();
+    }
+
+    GameObject GetRandomItem(List<GameObject> prefabs, GameObject lastSpawned)
+    {
+        // Ensure we don't spawn the same item twice in a row
+        GameObject randomPrefab;
+        do
+        {
+            randomPrefab = prefabs[Random.Range(0, prefabs.Count)];
+        } while (randomPrefab == lastSpawned);
+
+        return randomPrefab;
     }
 
     void StartCooldown()

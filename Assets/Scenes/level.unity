@@ -8200,11 +8200,13 @@ MonoBehaviour:
   wantToWriteInTrigger: 
   usesMultipleDias: 1
   theDifferentDias:
-  - Welcome to the cook phase! here you need to make customers food with ingredients!
-  - You get then randomly on the left and on the bottom you have 4 spare deck slots
-    where you can keep some of them!
-  - On the right you have belt that brings you how to cook it and how to spice it!
-  - You have limited time to do it, other wise, your carieer is DONE!
+  - Hello! Quickly take the ingredients, cooking methods, and seasonings! The blind
+    chef won't be waiting for long!
+  - You need to make a list of products for the chef in 60 seconds, or your career
+    is over!
+  - Only grab what is needed because they cost money! If you mistakenly take something,
+    place it either on the belt or the deck at the bottom.
+  - Make sure the customer gets what they want!
   - Good luck lol
   doYouWantToSoDifferentCountinueText: 0
   whatToSayAwayText: 
@@ -10100,8 +10102,8 @@ MonoBehaviour:
   UpgradeButton: {fileID: 187679321}
   productSpawnPoint: {fileID: 725983274}
   equipmentSpawnPoint: {fileID: 190913253}
-  MinSpawnInterval: 5
-  MaxSpawnInterval: 6
+  MinSpawnInterval: 4
+  MaxSpawnInterval: 4.5
   actionCooldown: 3
   productLevel1Prefabs:
   - {fileID: 7090847125861746693, guid: 9303afdc27bd05848aa09fa6ebb06b2d, type: 3}
