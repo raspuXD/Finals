@@ -18,5 +18,4 @@ MonoBehaviour:
   ingredient3: 6
   cookingStyle: 2
   seasoning: 2
-  minCost: 75
-  maxCost: 100
+  theCost: 100

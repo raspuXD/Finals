@@ -36,7 +36,7 @@ public class Customer : MonoBehaviour
 
     [Header("Accept")]
     [SerializeField] FullFade fullFade;
-
+    [SerializeField] OrderSlots orderSlots;
 
 
 
@@ -62,9 +62,31 @@ public class Customer : MonoBehaviour
         speakCloud.gameObject.SetActive(false);
         theCustomerUIImage.color = new Color(1, 1, 1, 0); // Make invisible
 
-        // Reset customer data
         MoneyManager money = FindObjectOfType<MoneyManager>();
-        money.IncreaseMoney(selectedCustomer.theFoodCustomerWants.maxCost);
+        int howMuch = selectedCustomer.theFoodCustomerWants.theCost;
+
+        // Accessing the orderSlots script and checking the boolean values
+        OrderSlots orderSlotsScript = FindObjectOfType<OrderSlots>();
+
+        // Count how many of the bools are true
+        int correctCount = 0;
+
+        if (orderSlotsScript.slot1Correct) correctCount++;
+        if (orderSlotsScript.slot2Correct) correctCount++;
+        if (orderSlotsScript.slot3Correct) correctCount++;
+        if (orderSlotsScript.slot4Corrent) correctCount++;
+        if (orderSlotsScript.slot5Correct) correctCount++;
+
+        // Apply multiplier based on the number of correct slots
+        float multiplier = 1f - (correctCount * 0.2f);  // 1 - (0.2 * correctCount)
+        if (correctCount == 5) multiplier = 1f;  // No discount if all 5 are correct
+
+        // Apply the calculated multiplier to the cost
+        howMuch = (int)(howMuch * multiplier);
+
+        money.IncreaseMoney(howMuch);
+
+
 
         selectedCustomer = null;
 
