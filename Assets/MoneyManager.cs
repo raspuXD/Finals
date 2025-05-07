@@ -58,7 +58,7 @@ public class MoneyManager : MonoBehaviour
         lastChangeTime = Time.time;
         canvasGroup.alpha = 1f;
 
-        StartCoroutine(ShowNormalTextAfterDelay(1f));
+        StartCoroutine(ShowNormalTextAfterDelay(2f));
     }
 
     IEnumerator ShowNormalTextAfterDelay(float delay)
