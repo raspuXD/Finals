@@ -135,14 +135,17 @@ public class DragAndDrop : MonoBehaviour
         if (whatIsThis == ItemType.Ingredient)
         {
             ingredient.theInfoHolder.SetActive(false);
+            PlayFoodSpecificSound(ingredient.ingredientType);
         }
         else if (whatIsThis == ItemType.Seasoning)
         {
             seasoning.theInfoHolder.SetActive(false);
+            PlaySpiceSpecificSound(seasoning.seasoningType);
         }
         else
         {
             cookingStyle.theInfoHolder.SetActive(false);
+            PlayEquipmentSpecificSound(cookingStyle.cookingType);
         }
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -283,9 +286,9 @@ public class DragAndDrop : MonoBehaviour
                 break;
         }
     }
-    private void PlayEquipmentSpecificSound(CookingStyle.State cookingStyle)
+    private void PlayEquipmentSpecificSound(CookingStyle.State cookingType)
     {
-        switch (cookingStyle)
+        switch (cookingType)
         {
             case CookingStyle.State.Frying:
                 AudioManager.Instance.PlaySFX("Frying");
@@ -298,9 +301,9 @@ public class DragAndDrop : MonoBehaviour
                 break;
         }
     }
-    private void PlaySpiceSpecificSound(Seasoning.State seasoning)
+    private void PlaySpiceSpecificSound(Seasoning.State seasoningType)
     {
-        switch (seasoning)
+        switch (seasoningType)
         {
             case Seasoning.State.Plain:
                 AudioManager.Instance.PlaySFX("CardPickup");
