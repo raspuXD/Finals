@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     public bool requiredCondition = false;
     public bool showTimer = true;
 
-    private float currentTime = 0f;
+    private float currentTime;
     private bool hasLost = false;
     public bool canBeDone = false;
 
@@ -21,19 +21,24 @@ public class Timer : MonoBehaviour
     {
         if (!hasLost && timerRunning)
         {
-            currentTime += Time.deltaTime;
+            currentTime -= Time.deltaTime;
 
             if (timerText != null)
             {
                 timerText.gameObject.SetActive(showTimer);
                 if (showTimer)
-                    timerText.text = Mathf.FloorToInt(currentTime).ToString();
+                    timerText.text = Mathf.CeilToInt(currentTime).ToString() + "S";
             }
 
-            if (currentTime >= maxTime && !requiredCondition)
+            if (currentTime <= 0f && !requiredCondition)
             {
                 hasLost = true;
                 timerRunning = false;
+                currentTime = 0f; // Clamp to 0 to avoid negative values in UI
+                if (timerText != null)
+                {
+                    timerText.text = "0";
+                }
                 theLose.StartFadeIn();
             }
         }
@@ -46,21 +51,20 @@ public class Timer : MonoBehaviour
 
     public void StartTimer()
     {
-        currentTime = 0f;
+        currentTime = maxTime;
         hasLost = false;
         timerRunning = true;
     }
 
     public void StopAndResetTimer()
     {
-        currentTime = 0f;
+        currentTime = maxTime;
         hasLost = false;
         timerRunning = false;
 
         if (timerText != null)
         {
-            timerText.text = "0";
+            timerText.text = Mathf.CeilToInt(currentTime).ToString();
         }
     }
-
 }

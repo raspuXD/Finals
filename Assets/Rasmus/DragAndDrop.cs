@@ -127,6 +127,8 @@ public class DragAndDrop : MonoBehaviour
         beltItem.enabled = false;
         isDragging = true;
 
+        AudioManager.Instance.PlaySFX("CardPickup");
+        
         if (whatIsThis == ItemType.Ingredient)
         {
             ingredient.theInfoHolder.SetActive(false);
