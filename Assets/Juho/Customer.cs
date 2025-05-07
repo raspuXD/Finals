@@ -65,17 +65,14 @@ public class Customer : MonoBehaviour
         MoneyManager money = FindObjectOfType<MoneyManager>();
         int howMuch = selectedCustomer.theFoodCustomerWants.theCost;
 
-        // Accessing the orderSlots script and checking the boolean values
-        OrderSlots orderSlotsScript = FindObjectOfType<OrderSlots>();
-
         // Count how many of the bools are true
         int correctCount = 0;
 
-        if (orderSlotsScript.slot1Correct) correctCount++;
-        if (orderSlotsScript.slot2Correct) correctCount++;
-        if (orderSlotsScript.slot3Correct) correctCount++;
-        if (orderSlotsScript.slot4Corrent) correctCount++;
-        if (orderSlotsScript.slot5Correct) correctCount++;
+        if (orderSlots.slot1Correct) correctCount++;
+        if (orderSlots.slot2Correct) correctCount++;
+        if (orderSlots.slot3Correct) correctCount++;
+        if (orderSlots.slot4Corrent) correctCount++;
+        if (orderSlots.slot5Correct) correctCount++;
 
         // Apply multiplier based on the number of correct slots
         float multiplier = 1f - (correctCount * 0.2f);  // 1 - (0.2 * correctCount)

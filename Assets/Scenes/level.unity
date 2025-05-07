@@ -2413,6 +2413,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345752094}
   m_CullTransparentMesh: 1
+--- !u!1 &369045597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 369045598}
+  - component: {fileID: 369045599}
+  m_Layer: 0
+  m_Name: Tutorial Pop ForTheStarert
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &369045598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369045597}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1588233714}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &369045599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369045597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df0df0d7521a0264eb89d73497d2ef8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 796096045}
+  theTutorialButton: {fileID: 2028347470}
+  thePopUp: {fileID: 1585133119}
+  canCountinueNow: {fileID: 196239472}
+  theInfoText: {fileID: 1787688799}
+  howToGetAwayText: {fileID: 1552897678}
+  theTutorialButtonAgain: {fileID: 2028347468}
+  closeKey: 27
+  willSeeOnlyOnce: 1
+  thePlayerPrefName: asdasdasdas
+  howFastScales: 0.33
+  howLongToCanClose: 2
+  showInStart: 1
+  wantToWriteInStart: 
+  howLongNeedToWaitIfFade: 0
+  fromATrigger: 0
+  wantToWriteInTrigger: 
+  usesMultipleDias: 1
+  theDifferentDias:
+  - Welcome to 'Blind Taste Better'! Your job is to make sure the blind chef gets
+    the card with the details so he knows what to cook.
+  - Also, make sure you never go bankrupt! Lol!
+  - Yeah, go already! Customers aren't very patient!
+  doYouWantToSoDifferentCountinueText: 0
+  whatToSayAwayText: 
 --- !u!1 &395848563
 GameObject:
   m_ObjectHideFlags: 0
@@ -3480,7 +3549,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &725983273
 GameObject:
@@ -6017,6 +6086,7 @@ Transform:
   - {fileID: 265279793}
   - {fileID: 719128250}
   - {fileID: 305770960}
+  - {fileID: 1624211144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205383738
@@ -7962,6 +8032,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 477131263}
+  - {fileID: 369045598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8223,7 +8294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1193983214}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1644976322
 GameObject:
@@ -11869,7 +11940,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!1 &1073629417811376588
 GameObject:
@@ -17623,7 +17694,6 @@ SceneRoots:
   - {fileID: 1588233714}
   - {fileID: 52346353}
   - {fileID: 1193983214}
-  - {fileID: 1624211144}
   - {fileID: 796096049}
   - {fileID: 1243255085}
   - {fileID: 250963843}
