@@ -324,8 +324,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d3136a3462f515c46b8f34fc8808437f, type: 2}
-  m_sharedMaterial: {fileID: -633065373592363691, guid: d3136a3462f515c46b8f34fc8808437f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c396b0b8ef71fdf46b2bcb54bedddada, type: 2}
+  m_sharedMaterial: {fileID: -633065373592363691, guid: c396b0b8ef71fdf46b2bcb54bedddada, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2465,7 +2465,7 @@ MonoBehaviour:
   howToGetAwayText: {fileID: 1552897678}
   theTutorialButtonAgain: {fileID: 2028347468}
   closeKey: 27
-  willSeeOnlyOnce: 1
+  willSeeOnlyOnce: 0
   thePlayerPrefName: asdasdasdas
   howFastScales: 0.33
   howLongToCanClose: 2
