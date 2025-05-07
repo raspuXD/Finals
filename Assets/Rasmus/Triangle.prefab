@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4248627426300332456}
   - component: {fileID: 4494042932732940926}
   - component: {fileID: 6142797990118959534}
+  - component: {fileID: 3928803782756749621}
+  - component: {fileID: 8122212288286676432}
   m_Layer: 0
   m_Name: Triangle
   m_TagString: Untagged
@@ -172,3 +174,35 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &3928803782756749621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672670488352211932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bce902b5d378d7f4d9b9e6e59bd54f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenBough: 0
+  whatIsThis: 0
+--- !u!114 &8122212288286676432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672670488352211932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8810ea5acd787564eb24680716ff6f54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameForIngredient: Water
+  ingredientType: 4
+  image: {fileID: 21300000, guid: 52742cf3e36812649a95b632986791a7, type: 3}
+  theInfoHolder: {fileID: 0}
+  theCardNameText: {fileID: 0}
+  theCost: 5

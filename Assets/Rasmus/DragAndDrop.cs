@@ -58,7 +58,7 @@ public class DragAndDrop : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
-
+        AudioManager.Instance.PlaySFX("CardPlace");
         if (isInMoveZone)
         {
             beltItem.enabled = true;
@@ -113,14 +113,17 @@ public class DragAndDrop : MonoBehaviour
             if (whatIsThis == ItemType.Ingredient)
             {
                 mane.DecreaseMoney(ingredient.theCost);
+                PlayFoodSpecificSound(ingredient.ingredientType);
             }
             else if (whatIsThis == ItemType.Seasoning)
             {
                 mane.DecreaseMoney(seasoning.theCost);
+                PlaySpiceSpecificSound(seasoning.seasoningType);
             }
             else
             {
                 mane.DecreaseMoney(cookingStyle.theCost);
+                PlayEquipmentSpecificSound(cookingStyle.cookingType);
             }
         }
 
@@ -128,7 +131,7 @@ public class DragAndDrop : MonoBehaviour
         isDragging = true;
 
         AudioManager.Instance.PlaySFX("CardPickup");
-        
+
         if (whatIsThis == ItemType.Ingredient)
         {
             ingredient.theInfoHolder.SetActive(false);
@@ -154,6 +157,7 @@ public class DragAndDrop : MonoBehaviour
         // Reset the timer when dragging starts
         timer = 0f;
     }
+
 
     private void OnMouseOver()
     {
@@ -234,6 +238,79 @@ public class DragAndDrop : MonoBehaviour
                 // Destroy the object after 45 seconds of inactivity
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private void PlayFoodSpecificSound(Ingredient.State ingredientType)
+    {
+        switch (ingredientType)
+        {
+            case Ingredient.State.GradedCheese:
+                AudioManager.Instance.PlaySFX("GratedCheese");
+                break;
+            case Ingredient.State.Potato:
+                AudioManager.Instance.PlaySFX("Vegetable");
+                break;
+            case Ingredient.State.Jauheliha:
+                AudioManager.Instance.PlaySFX("Meat");
+                break;
+            case Ingredient.State.Spagetti:
+                AudioManager.Instance.PlaySFX("Spaghetti");
+                break;
+            case Ingredient.State.Water:
+                AudioManager.Instance.PlaySFX("Water");
+                break;
+            case Ingredient.State.Tomato:
+                AudioManager.Instance.PlaySFX("Vegetable");
+                break;
+            case Ingredient.State.CheeseSlice:
+                AudioManager.Instance.PlaySFX("Cheese");
+                break;
+            case Ingredient.State.Puns:
+                AudioManager.Instance.PlaySFX("CardPickup");
+                break;
+            case Ingredient.State.Steak:
+                AudioManager.Instance.PlaySFX("Meat");
+                break;
+            case Ingredient.State.Lemon:
+                AudioManager.Instance.PlaySFX("Lemon");
+                break;
+            case Ingredient.State.Salmon:
+                AudioManager.Instance.PlaySFX("Meat");
+                break;
+            case Ingredient.State.Rice:
+                AudioManager.Instance.PlaySFX("CardPickup");
+                break;
+        }
+    }
+    private void PlayEquipmentSpecificSound(CookingStyle.State cookingStyle)
+    {
+        switch (cookingStyle)
+        {
+            case CookingStyle.State.Frying:
+                AudioManager.Instance.PlaySFX("Frying");
+                break;
+            case CookingStyle.State.Steam:
+                AudioManager.Instance.PlaySFX("Steam");
+                break;
+            case CookingStyle.State.Grill:
+                AudioManager.Instance.PlaySFX("Grill");
+                break;
+        }
+    }
+    private void PlaySpiceSpecificSound(Seasoning.State seasoning)
+    {
+        switch (seasoning)
+        {
+            case Seasoning.State.Plain:
+                AudioManager.Instance.PlaySFX("CardPickup");
+                break;
+            case Seasoning.State.Seasoned:
+                AudioManager.Instance.PlaySFX("Spice");
+                break;
+            case Seasoning.State.Spicy:
+                AudioManager.Instance.PlaySFX("Spice");
+                break;
         }
     }
 }

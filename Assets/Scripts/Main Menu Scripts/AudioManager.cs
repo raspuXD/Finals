@@ -117,6 +117,12 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
+            Debug.LogError($"SFX sound '{name}' not found in AudioManager!");
+            return;
+        }
+
+        if (s == null)
+        {
             return;
         }
 
